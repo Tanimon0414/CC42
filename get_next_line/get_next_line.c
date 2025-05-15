@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:49:30 by atanimot          #+#    #+#             */
-/*   Updated: 2025/05/15 21:20:17 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:47:20 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static char	*extract_line(char *rest)
 	if (!rest || !*rest)
 		return (NULL);
 	while (rest[i] && rest[i] != '\n')
+		i++;
+	if (rest[i] == '\n')
 		i++;
 	line = malloc(i + 1);
 	if (!line)

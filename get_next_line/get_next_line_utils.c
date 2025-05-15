@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:49:25 by atanimot          #+#    #+#             */
-/*   Updated: 2025/05/15 20:39:18 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:36:35 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	len;
 
+	len = 0;
 	if (!s)
 		return (0);
 	while (s[len])
