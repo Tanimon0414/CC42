@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:49:32 by atanimot          #+#    #+#             */
-/*   Updated: 2025/05/15 21:27:46 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/05/18 19:43:02 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strdup(const char *s);
-int		main(void);
+// int		main(void);
 #endif

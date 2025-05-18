@@ -6,23 +6,22 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:49:30 by atanimot          #+#    #+#             */
-/*   Updated: 2025/05/15 21:47:20 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/05/18 18:28:56 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*read_until_newline(int fd, char *rest)
+static char	*read_loop(int fd, char *rest, char *buffer)
 {
-	char	buffer[BUFFER_SIZE + 1];
 	ssize_t	bytes;
 	char	*tmp;
 
 	bytes = 1;
-	while (!ft_strchr(rest, '\n') && bytes != 0)
+	while (!ft_strchr(rest, '\n') && bytes > 0)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
-		if (bytes == -1)
+		if (bytes < 0)
 		{
 			free(rest);
 			return (NULL);
@@ -33,6 +32,25 @@ static char	*read_until_newline(int fd, char *rest)
 		rest = tmp;
 	}
 	return (rest);
+}
+
+static char	*read_until_newline(int fd, char *rest)
+{
+	char	*buffer;
+	char	*result;
+
+	if (!rest)
+		rest = ft_strdup("");
+	buffer = malloc((size_t)BUFFER_SIZE + 1);
+	if (!buffer || !rest)
+	{
+		free(buffer);
+		free(rest);
+		return (NULL);
+	}
+	result = read_loop(fd, rest, buffer);
+	free(buffer);
+	return (result);
 }
 
 static char	*extract_line(char *rest)
@@ -70,6 +88,11 @@ static char	*update_rest(char *rest)
 		return (NULL);
 	}
 	i++;
+	if (rest[i] == '\0')
+	{
+		free(rest);
+		return (NULL);
+	}
 	new_rest = ft_strdup(rest + i);
 	free(rest);
 	return (new_rest);
@@ -79,6 +102,7 @@ char	*get_next_line(int fd)
 {
 	static char	*rest;
 	char		*line;
+	char		*new_rest;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -86,6 +110,13 @@ char	*get_next_line(int fd)
 	if (!rest)
 		return (NULL);
 	line = extract_line(rest);
-	rest = update_rest(rest);
+	if (!line)
+	{
+		free(rest);
+		rest = NULL;
+		return (NULL);
+	}
+	new_rest = update_rest(rest);
+	rest = new_rest;
 	return (line);
 }
