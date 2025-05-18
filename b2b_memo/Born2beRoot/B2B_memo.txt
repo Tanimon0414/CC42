@@ -1,0 +1,92 @@
+pfrancesさんかっこよくてめっちゃいい人
+
+仮想マシンをいじるとハッシュ値が変わっちゃう
+やで、仮想マシンを触りたい場合は、複製してから、その複製した方を触っていく
+
+centOSはDebianと比べて新機能に保守的
+
+aptitude
+aptの派生
+管理者が使いやすいように設計されている
+
+crontab
+コマンドを定期的に実行してくれる機能
+/usr/lcal/bin にmonitoring.shみたいなのを作る
+*/10 で10分ごとにコマンドを実行できる
+
+/etc/login.defs
+PASS_MAX_DAYS   30
+PASS_MIN_DAYS   2
+
+
+uname -a
+でなんのOSが入ってるかどうか等をしらべられる
+
+sudo groups kishigam
+
+sudo getent group sudo
+
+/etc/pam.d/common-passwordに定義されているパスワードのにしたがってパスワードを設定したユーザを作成する
+striong password policy で検索する
+sudo add user ユーザ名
+
+// evaluatingというグループを作成してkishigamをそのグループに入れる
+sudo addgroup evaluating
+sudo adduser kishigam evaluateing
+
+// adduserのほうが権限が多く与えられる
+// mオプションでホームディレクトリまで作られる
+sudo useradd -m kishigam
+
+この2つのファイルを変更することでホストネームを変えられる。そして再起動する
+/etc/hostname
+/etc/hosts
+
+ここにsudoコマンドのlogをどこに保存していいくか等を記述していく
+/etc/sudoers.d/任意のファイル名
+
+// ufwのステータス状況（ポートの開放状況）を確認する
+sudo ufw status
+
+ポート8080を許可する
+sudo ufw allow 8080
+
+ポート8080を削除する
+sudo ufw delete allow 8080
+
+// ポートを上から番号表示にして、その番号のポートルールを削除する
+sudo ufw statusnumbered
+sudo ufw delete 2
+
+/etc/ssh/sshd_config
+33行目
+#PermitRootLogin prohibit-password
+から
+PermitRootLogin no
+にする
+
+このコマンドで定期実行するスクリプトについて設定できる
+sudo crontab -e
+
+crontab
+コマンドを定期的に実行してくれる機能
+/usr/lcal/bin にmonitoring.shみたいなのを作る
+*/10 で10分ごとにコマンドを実行できる
+
+*/10 * * * * //usr/local/bin/monitoring.sh
+
+// これでcronコマンドを停止させられる
+sudo systemctl stop cron
+
+再起動したら表示されても大丈夫
+
+lvm
+logical volume manager
+
+物質的なボリュームを仮想的なものに置き換えて、ユーザに割り振っていく
+
+動的にボリュームを割り当てたりできる
+
+
+root ssh 禁止
+https://webkaru.net/linux/ssh-prohibit-root-login/
