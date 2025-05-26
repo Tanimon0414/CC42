@@ -5,3 +5,8 @@ Lv1  do-op（ミス言う）
      ft_atoi（ミス言う）
 	 inter
 	 is_power_of_2
+	 print_bits
+	 swap_bits
+Lv2  add_prime_sum
+	 atoibase(ミス言う)
+	 ft_list_size
