@@ -1,0 +1,7 @@
+1周目ミス
+
+Lv0  ft_swap
+Lv1  do-op（ミス言う）
+     ft_atoi（ミス言う）
+	 inter
+	 is_power_of_2
