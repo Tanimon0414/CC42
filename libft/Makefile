@@ -57,10 +57,10 @@ $(TEST_NAME): $(TEST_OBJ) $(NAME)
 #--- クリーンルール ---
 
 clean:
-	rm -f $(OBJS_ALL)
+	rm -f $(OBJS_ALL) $(TEST_OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(TEST_NAME)
 
 re: fclean all
 

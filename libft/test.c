@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 20:24:04 by atanimot          #+#    #+#             */
-/*   Updated: 2025/05/31 20:59:00 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/01 09:18:39 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 int	main(void)
 {
-	printf("Hello World\n");
-	ft_printf("Hello World\n");
+	char *str = "Hello World";
+	printf("%s\n", str);
+	ft_printf("%s\n", str);
 	return (0);
 }
