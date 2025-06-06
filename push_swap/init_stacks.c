@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 18:20:35 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/05 16:17:39 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/06 14:24:29 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,21 @@ void	initialize_stacks(t_stack **stack_a_ptr, t_stack **stack_b_ptr)
 	(*stack_b_ptr)->size = 0;
 }
 
-static int	dup_check(t_stack *stack_a_ptr, t_node *new_node)
+static int	dup_check(t_stack *stack_a, int num)
 {
-	t_node	*current_check_node;
+	t_node	*current;
+	int		i;
 
-	current_check_node = stack_a_ptr->top;
-	while (current_check_node != NULL)
+	if (!stack_a || !stack_a->top)
+		return (1);
+	current = stack_a->top;
+	i = 0;
+	while (i < stack_a->size)
 	{
-		if (current_check_node->data == new_node->data)
+		if (current->data == num)
 			return (0);
-		current_check_node = current_check_node->next;
+		current = current->next;
+		i++;
 	}
 	return (1);
 }
@@ -53,8 +58,8 @@ static t_node	*create_and_init_node(long num_val, t_stack **sa_ptr,
 		stack_error(sa_ptr, sb_ptr);
 	node->data = (int)num_val;
 	node->index = 0;
-	node->next = node;
-	node->prev = node;
+	node->next = NULL;
+	node->prev = NULL;
 	return (node);
 }
 
@@ -71,12 +76,9 @@ void	check_and_set(int argc, char **argv, t_stack **stack_a_ptr,
 		num_val = ft_atol_strict(argv[i]);
 		if (num_val > INT_MAX || num_val < INT_MIN)
 			stack_error(stack_a_ptr, stack_b_ptr);
-		new_node = create_and_init_node(num_val, stack_a_ptr, stack_b_ptr);
-		if (!dup_check(*stack_a_ptr, new_node))
-		{
-			free(new_node);
+		if (!dup_check(*stack_a_ptr, (int)num_val))
 			stack_error(stack_a_ptr, stack_b_ptr);
-		}
+		new_node = create_and_init_node(num_val, stack_a_ptr, stack_b_ptr);
 		add_node_to_back(*stack_a_ptr, new_node);
 		i++;
 	}

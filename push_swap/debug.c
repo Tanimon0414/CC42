@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:25:33 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/05 13:45:11 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/06 18:37:00 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,69 @@
 void	debug_print_stack_values(t_stack *stack, const char *stack_name)
 {
 	t_node	*current;
+	int		i;
 
-	// まず、スタック自体がNULLでないか、スタック名がNULLでないかを確認
 	if (stack_name == NULL)
 		printf("Stack name is NULL.\n");
 	else
 		printf("%s: ", stack_name);
-	printf("(size: %d) ", stack->size); // スタックのサイズも表示
+	if (!stack)
+	{
+		printf("(null stack)\n");
+		return ;
+	}
+	printf("(size: %d) ", stack->size);
+	if (stack->top == NULL)
+	{
+		printf("(empty)\n");
+		return ;
+	}
 	current = stack->top;
-	// スタックの要素を -> でつないで表示
-	while (current != NULL)
+	i = 0;
+	while (i < stack->size)
 	{
 		printf("%d", current->data);
-		if (current->next != NULL)
+		if (i < stack->size - 1)
 		{
 			printf(" -> ");
 		}
 		current = current->next;
+		i++;
 	}
-	printf(" -> NULL\n"); // リストの終端を示す
+	printf("\n");
+}
+
+void	debug_print_stack_index(t_stack *stack, const char *stack_name)
+{
+	t_node	*current;
+	int		i;
+
+	if (stack_name == NULL)
+		printf("Stack name is NULL.\n");
+	else
+		printf("%s: ", stack_name);
+	if (!stack)
+	{
+		printf("(null stack)\n");
+		return ;
+	}
+	printf("(size: %d) ", stack->size);
+	if (stack->top == NULL)
+	{
+		printf("(empty)\n");
+		return ;
+	}
+	current = stack->top;
+	i = 0;
+	while (i < stack->size)
+	{
+		printf("%d", current->index);
+		if (i < stack->size - 1)
+		{
+			printf(" -> ");
+		}
+		current = current->next;
+		i++;
+	}
+	printf("\n");
 }
