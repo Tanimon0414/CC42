@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 20:22:01 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/08 20:38:07 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/08 20:48:21 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,23 @@ void	move_node(int move_index, t_stack *stack_a, t_stack *stack_b)
 	t_node	*current_a;
 }
 
+void	search_goal(t_node *current_a, t_stack *stack_b)
+{
+}
+
 int	count_command(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*current_a;
-	int		index_b;
 
 	current_a = stack_a->top;
 	while (current_a != NULL)
 	{
-		index_b = search_goal(current_a->index, stack_b);
+		search_goal(current_a, stack_b);
 	}
+}
+
+void	set_command(t_stack *stack_a, t_stack *stack_b)
+{
 }
 
 void	sort_stacks_small(t_stack *stack_a, t_stack *stack_b)
