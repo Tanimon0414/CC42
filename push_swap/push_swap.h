@@ -77,6 +77,7 @@ t_node				*pop_node_from_front(t_stack *stack);
 void				add_node_to_front(t_stack *stack, t_node *new_node);
 
 void				set_index(t_stack *stack_a);
+int					check_sorted(t_stack *stack);
 
 long				ft_atol_strict(const char *str);
 

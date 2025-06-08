@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:55:58 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/06 20:23:39 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/08 14:06:15 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int argc, char **argv)
 	debug_print_stack_values(stack_a, "1Stack A contents");
 	debug_print_stack_values(stack_b, "1Stack b contents");
 	set_index(stack_a);
+	if (check_sorted(stack_a))
+		return (0);
 	sort_stacks(stack_a, stack_b);
 	debug_print_stack_index(stack_a, "INStack A contents");
 	debug_print_stack_index(stack_b, "INStack b contents");
