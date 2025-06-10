@@ -27,6 +27,7 @@ static void	put_index(t_stack *stack, int i, int min)
 			break ;
 		}
 		current = current->next;
+		j++;
 	}
 	return ;
 }

@@ -5,6 +5,10 @@
 # define ATOL_ERROR_VALUE ((long)INT_MAX + 1LL)
 # define LLONG_CONVERSION_ERROR (LLONG_MAX - 1)
 
+#define TO_A 0  /* count_commands() の方向フラグ */
+#define TO_B 1
+
+
 # include "libft/ft_printf.h"
 # include "libft/libft.h"
 # include <limits.h>
