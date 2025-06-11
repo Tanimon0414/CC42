@@ -43,28 +43,32 @@ static int save_cost(int cost_a, int cost_b, t_node *cur)
     return(common);
 }
 
+/* count_commands.c */
+
 void count_commands_toa(t_stack *a, t_stack *b)
 {
-    t_node *cur;
-    int i;
-    cur = a->top;
-    i=0;
-    while(i < a ->size)
+    t_node *cur = b->top;          /* ← 1. ループ対象を B に */
+    int     i   = 0;
+
+    while (i < b->size)            /* ← 2. ループ上限も B */
     {
-        int cost_b;
-        int pos_a;
-        int cost_a;
+        int cost_b;                /* B 側の回転コスト */
+        int pos_a;                 /* A での挿入位置      */
+        int cost_a;                /* A 側の回転コスト    */
         int common;
 
-        cost_b = rotation_cost(a->size,i);
-        pos_a = target_pos_in_a(a, cur->index);
-        cost_a = rotation_cost(b->size, pos_a);
-        common = save_cost(cost_a, cost_b, cur);
-        set_commands(cost_a,cost_b, common,cur);
+        cost_b = rotation_cost(b->size, i);          /* ← 3. B のサイズ */
+        pos_a  = target_pos_in_a(a, cur->index);     /* 挿入点検索 */
+        cost_a = rotation_cost(a->size, pos_a);      /* ← 4. A のサイズ */
+        common = save_cost(cost_a, cost_b, cur);     /* 共通 rr/rrr を決定 */
+        set_commands(cost_a, cost_b, common, cur);   /* 個別回転数を格納 */
+
         cur = cur->next;
         i++;
     }
 }
+
+
 
 void count_commands_tob(t_stack *a, t_stack *b)
 {
