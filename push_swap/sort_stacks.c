@@ -13,7 +13,7 @@
 #include "push_swap.h"
 
 // minをtopに持ってくる
-void align_min_on_top(t_stack *a)
+static void align_min_on_top(t_stack *a)
 {
     int pos;
 
@@ -69,36 +69,38 @@ static int search_min(t_stack *a)
 /* 4. 実際に rr / ra … を回して pb */
 static void exec_rot(t_stack *a, t_stack *b, t_command *c)
 {
-    while (c->rr  > 0) 
-    {
+    while (c->rr--  > 0) 
         rr(a, b, 1);  
-        c->rr--;
-    }
-    while (c->rrr > 0) 
-    {
+    while (c->rrr-- > 0) 
         rrr(a, b, 1);
-        c->rrr--;
-    }
-    while (c->ra  > 0) 
-    {
+    while (c->ra--  > 0) 
         ra(a, 1);
-        c->ra--;
-    }
-    while (c->rra > 0) 
-    {
+    while (c->rra-- > 0) 
         rra(a, 1);
-        c->rra--;
-    }
-    while (c->rb  > 0) 
-    {
+    while (c->rb--  > 0) 
         rb(b, 1);
-        c->rb--;
-    }
-    while (c->rrb > 0) 
-    {
+    while (c->rrb-- > 0) 
         rrb(b, 1);
-        c->rrb--;
-    }
+}
+
+static void exec_rot_rev(t_stack *a, t_stack *b, t_command *c)
+{
+    /* 共通回転 */
+    while (c->rr--)   
+        rr(a, b, 1);
+    while (c->rrr--)  
+        rrr(a, b, 1);
+    /* 個別回転：まず dst (B) 側 */
+    while (c->rb--)   
+        rb(b, 1);
+    while (c->rrb--)  
+        rrb(b, 1);
+
+    /* つづいて src (A) 側 */
+    while (c->ra--)   
+        ra(a, 1);
+    while (c->rra--)  
+        rra(a, 1);
 }
 
 static void move_node(int idx, t_stack *a, t_stack *b)
@@ -115,6 +117,22 @@ static void move_node(int idx, t_stack *a, t_stack *b)
     }
     exec_rot(a, b, &cur->command);
     pb(a, b, 1);
+}
+
+static void move_node_toa(int idx, t_stack *b, t_stack *a)
+{
+    t_node *cur;
+    int     i;
+
+    cur = b->top;
+    i   = 0;
+    while (i < idx)
+    {
+        cur = cur->next;
+        i++;
+    }
+    exec_rot_rev(a, b, &cur->command);
+    pa(a, b, 1);
 }
 
 void sort_stacks(t_stack *a, t_stack *b)
@@ -135,7 +153,7 @@ void sort_stacks(t_stack *a, t_stack *b)
     while (a->size > 3)
     {
         init_commands(a);
-        count_commands(a, b);
+        count_commands_tob(a, b);
         move_idx = search_min(a);
         move_node(move_idx, a, b);
     }
@@ -143,14 +161,10 @@ void sort_stacks(t_stack *a, t_stack *b)
     /* B から戻す: A 昇順になる位置で pa */
     while (b->size > 0)
     {
-        /* B 側ノードに cost を入れるために
-           A/B を入れ替えて呼び出す */
         init_commands(b);
-
-        /* reuse count_commands but with role flipped */
-        /* ごく小数なので単純版でも OK */
-       
+        count_commands_toa(a, b);
         move_idx = search_min(b);
+        move_node_toa(move_idx, b, a);
         /* exec_rot() は a,b の向きが逆なので、逆向け wrapper */
 
 	}

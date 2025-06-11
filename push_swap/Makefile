@@ -1,57 +1,56 @@
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
+NAME        := push_swap
 
-NAME_MANDATORY = push_swap
-NAME_BONUS = checker
+CC          := cc
+CFLAGS      := -Wall -Wextra -Werror
+INCS        := -I.                     # ヘッダがあるディレクトリを追加する場合はここに追記
 
+RM          := rm -f
 
-#--- Libft Configuration ---
-LIBFT_DIR = libft/
-LIBFT_A = $(LIBFT_DIR)libft.a
-LIBFT_MAKE_COMMAND = $(MAKE) -C $(LIBFT_DIR) all
+### ソース一覧 ###
+SRCS := \
+	check.c \
+	commands_p.c \
+	commands_r.c \
+	commands_rr.c \
+	commands_s.c \
+	count_commands.c \
+	error.c \
+	init_commands.c \
+	init_stacks.c \
+	index.c \
+	main.c \
+	sort_small.c \
+	sort_stacks.c \
+	sort_utils.c \
+	utils.c
 
-#--- Include ---
-INCLUDES = -I$(LIBFT_DIR)
+OBJS := $(SRCS:.c=.o)
 
-#--- Sources Files for push_swap and checker ---
-SRCS_MANDATORY = 
-# SRCS_BONUS = 
-# TEST_SRCS_PS = test.c
+### libft ###
+LIBFT_DIR := libft
+LIBFT     := $(LIBFT_DIR)/libft.a
 
-#--- Object Files ---
-OBJS_MANDATORY = $(SRCS_MANDATORY:.c=.o)
-OBJS_BONUS     = $(SRCS_BONUS:.c=.o)
-# TEST_OBJS_PS   = $(TEST_SRCS_PS:.c=.o)
+### ルール ###
+all: $(NAME)
 
-#--- Test Program Name ---
-# TEST_NAME_PS = test_ps # push_swap のテスト実行ファイル名
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LIBFT) -o $(NAME)
 
-all: $(NAME_MANDATORY)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
-$(LIBFT_A):
-		@echo "Building Libft (including ft_printf and bonus functions)..."
-		@$(LIBFT_MAKE_COMMAND)
-
-$(NAME_MANDATORY): $(OBJS_MANDATORY) $(LIBFT_A)
-		@echo "Compiling $(NAME_MANDATORY)..."
-		$(CC) $(CFGLASS) $(INCLUDES) $(OBJS_MANDATORY) $(LIBFT_A) -o $(NAME_BONUS)
-		@echo "$(TEST_NAME_PS) compiled!"
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 clean:
-		@echo "Cleaning push_swap object files..."
-		$(RM) $(OBJS_MANDATORY) $(OBJS_BONUS) $(TEST_OBJS_PS)
-		@echo "Cleaning Libft..."
-		@$(MAKE) -C $(LIBFT_DIR) clean 
-	
+	$(RM) $(OBJS)
+	$(MAKE) -C $(LIBFT_DIR) clean
+
 fclean: clean
-		@echo "Cleaning $(NAME_MANDATORY), $(NAME_BONUS), and test program..."
-		$(RM) $(NAME_MANDATORY) $(NAME_BONUS) $(TEST_NAME_PS)
-		@echo "Full cleaning Libft..."
-		@$(MAKE) -C $(LIBFT_DIR) fclean
+	$(RM) $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY all clean fclean re  libft
-# bonus test
+.PHONY: all clean fclean re

@@ -23,14 +23,10 @@ int	main(int argc, char **argv)
 	}
 	initialize_stacks(&stack_a, &stack_b);
 	check_and_set(argc, argv, &stack_a, &stack_b);
-	debug_print_stack_values(stack_a, "1Stack A contents");
-	debug_print_stack_values(stack_b, "1Stack b contents");
 	set_index(stack_a);
 	if (check_sorted(stack_a))
 		return (0);
 	sort_stacks(stack_a, stack_b);
-	debug_print_stack_index(stack_a, "INStack A contents");
-	debug_print_stack_index(stack_b, "INStack b contents");
 	clear_stack(&stack_a);
 	clear_stack(&stack_b);
 	return (0);

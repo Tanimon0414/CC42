@@ -97,7 +97,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b, int print_op)
 		return ;
 	add_node_to_front(stack_a, head_b);
 	if (print_op)
-		printf("pa\n");
+		ft_printf("pa\n");
 	return ;
 }
 
@@ -110,6 +110,6 @@ void	pb(t_stack *stack_a, t_stack *stack_b, int print_op)
 		return ;
 	add_node_to_front(stack_b, head_a);
 	if (print_op)
-		printf("pb\n");
+		ft_printf("pb\n");
 	return ;
 }

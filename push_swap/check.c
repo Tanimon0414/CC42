@@ -24,8 +24,9 @@ int	check_sorted(t_stack *stack)
 		if (current->index != i)
 			break ;
 		current = current->next;
+		i++;
 	}
-	if (current == NULL)
-		return (1);
+	if (i == stack->size)
+    	return (1);
 	return (0);
 }

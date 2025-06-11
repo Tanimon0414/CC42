@@ -32,7 +32,7 @@ static void	put_index(t_stack *stack, int i, int min)
 	return ;
 }
 
-static int	search_min(t_stack *stack)
+static int	search_min_data(t_stack *stack)
 {
 	int		min;
 	int		j;
@@ -78,7 +78,7 @@ void	set_index(t_stack *stack_a)
 	set_index_all(stack_a);
 	while (i < stack_a->size)
 	{
-		min = search_min(stack_a);
+		min = search_min_data(stack_a);
 		put_index(stack_a, i, min);
 		i++;
 	}

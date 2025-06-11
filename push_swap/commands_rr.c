@@ -18,7 +18,7 @@ void	rra(t_stack *stack, int print_op)
 		return ;
 	stack->top = stack->top->prev;
 	if (print_op)
-		printf("rra\n");
+		ft_printf("rra\n");
 	return ;
 }
 
@@ -28,7 +28,7 @@ void	rrb(t_stack *stack, int print_op)
 		return ;
 	stack->top = stack->top->prev;
 	if (print_op)
-		printf("rrb\n");
+		ft_printf("rrb\n");
 	return ;
 }
 
@@ -37,6 +37,6 @@ void	rrr(t_stack *stack_a, t_stack *stack_b, int print_op)
 	rra(stack_a, 0);
 	rrb(stack_b, 0);
 	if (print_op)
-		printf("rrr\n");
+		ft_printf("rrr\n");
 	return ;
 }

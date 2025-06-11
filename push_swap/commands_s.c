@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	elswap(t_stack *stack)
+static void	elswap(t_stack *stack)
 {
 	t_node	*first;
 	t_node	*second;
@@ -47,7 +47,7 @@ void	sa(t_stack *stack_a, int print_op)
 	else
 		elswap(stack_a);
 	if (print_op)
-		printf("sa\n");
+		ft_printf("sa\n");
 	return ;
 }
 
@@ -65,7 +65,7 @@ void	sb(t_stack *stack_b, int print_op)
 	else
 		elswap(stack_b);
 	if (print_op)
-		printf("sb\n");
+		ft_printf("sb\n");
 	return ;
 }
 
@@ -74,6 +74,6 @@ void	ss(t_stack *stack_a, t_stack *stack_b, int print_op)
 	sa(stack_a, 0);
 	sb(stack_b, 0);
 	if (print_op)
-		printf("ss\n");
+		ft_printf("ss\n");
 	return ;
 }

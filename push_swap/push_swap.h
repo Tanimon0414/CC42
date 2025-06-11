@@ -12,7 +12,6 @@
 # include "libft/ft_printf.h"
 # include "libft/libft.h"
 # include <limits.h>
-# include <stdio.h> // デバッグ用
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -49,12 +48,6 @@ typedef struct s_stack
 
 /* ------------------------ Function Prototypes ----------------------------- */
 
-/* Argument validation and stack initialization (e.g., parser.c) */
-void				parse_and_init_stack(int argc, char **argv,
-						t_stack *stack_a);
-int					is_sorted(t_stack *stack);
-void				check_duplicate(t_stack *stack);
-
 /* Stack operations (e.g., operations_basic.c, operations_rotate.c) */
 void				sa(t_stack *stack_a, int print_op);
 void				sb(t_stack *stack_b, int print_op);
@@ -83,20 +76,20 @@ void				add_node_to_front(t_stack *stack, t_node *new_node);
 void				set_index(t_stack *stack_a);
 int					check_sorted(t_stack *stack);
 
-long				ft_atol_strict(const char *str);
+void sort_stacks(t_stack *a, t_stack *b);
+void sort_stacks_small(t_stack *stack_a, t_stack *stack_b);
+void init_commands(t_stack *stack_a);
+void count_commands_tob(t_stack *a, t_stack *b);
+void count_commands_toa(t_stack *a, t_stack *b);
+int rotation_cost(int size, int pos);
+int target_pos_in_b(t_stack *b, int idx);
+int target_pos_in_a(t_stack *a, int idx);
+int find_min_pos(t_stack *s);
+void sort_three(t_stack *a);
 
-int					main(int argc, char **argv);
-
-/* Debugging functions (e.g., debug.c) */
-void				debug_print_stack_values(t_stack *stack,
-						const char *stack_name);
-void				debug_print_stack_index(t_stack *stack,
-						const char *stack_name);
-
-/* Sorting algorithm (e.g., algorithm.c, sort_small.c) */
-void				sort_stacks(t_stack *stack_a, t_stack *stack_b);
-void				sort_three_elements(t_stack *stack_a);
-// void    assign_indices(t_stack *stack_a); // ソート後のインデックスを各ノードに割り当て
-// ... (コスト計算やノード移動戦略の関数)
+int strict_atoi(const char *str, int *out);
+int     ft_min(int n1, int n2);
+int     ft_max(int n1, int n2);
+int     ft_abs(int n);
 
 #endif

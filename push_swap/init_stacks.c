@@ -67,17 +67,15 @@ void	check_and_set(int argc, char **argv, t_stack **stack_a_ptr,
 		t_stack **stack_b_ptr)
 {
 	int		i;
-	long	num_val;
+	int	num_val;
 	t_node	*new_node;
-
 	i = 1;
 	while (i < argc)
 	{
-		num_val = ft_atol_strict(argv[i]);
-		if (num_val > INT_MAX || num_val < INT_MIN)
-			stack_error(stack_a_ptr, stack_b_ptr);
-		if (!dup_check(*stack_a_ptr, (int)num_val))
-			stack_error(stack_a_ptr, stack_b_ptr);
+		if (!strict_atoi(argv[i], &num_val))
+        	stack_error(stack_a_ptr, stack_b_ptr);
+		if (!dup_check(*stack_a_ptr, num_val))
+            stack_error(stack_a_ptr, stack_b_ptr);
 		new_node = create_and_init_node(num_val, stack_a_ptr, stack_b_ptr);
 		add_node_to_back(*stack_a_ptr, new_node);
 		i++;

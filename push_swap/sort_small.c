@@ -62,7 +62,7 @@ void sort_three(t_stack *a)
         rra(a,1);          // 1 3 2
 }
 
-void ra_or_rra(t_stack *stack_a, t_stack *stack_b, int pos)
+static void ra_or_rra(t_stack *stack_a, int pos)
 {
     if (pos <= stack_a->size / 2)
     {
@@ -95,7 +95,7 @@ void sort_stacks_small(t_stack *stack_a, t_stack *stack_b)
         while (stack_a->size > 3)
         {
             int pos = find_min_pos(stack_a);
-            ra_or_rra(stack_a, stack_b, pos);
+            ra_or_rra(stack_a, pos);
             pb(stack_a, stack_b, 1);
         }
         sort_three(stack_a);

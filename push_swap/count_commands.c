@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void set_commands(int cost_a, int cost_b, int common, t_node *cur)
+static void set_commands(int cost_a, int cost_b, int common, t_node *cur)
 {
      /* 個別回転数 */
     cur->command.ra  = ft_max(cost_a, 0) - common;
@@ -25,7 +25,7 @@ void set_commands(int cost_a, int cost_b, int common, t_node *cur)
                        cur->command.rr + cur->command.rrr + 1;
 }
 
-int save_cost(int cost_a, int cost_b, t_node *cur)
+static int save_cost(int cost_a, int cost_b, t_node *cur)
 {
     int common;
     common = 0;
@@ -43,7 +43,30 @@ int save_cost(int cost_a, int cost_b, t_node *cur)
     return(common);
 }
 
-void count_commands(t_stack *a, t_stack *b)
+void count_commands_toa(t_stack *a, t_stack *b)
+{
+    t_node *cur;
+    int i;
+    cur = a->top;
+    i=0;
+    while(i < a ->size)
+    {
+        int cost_b;
+        int pos_a;
+        int cost_a;
+        int common;
+
+        cost_b = rotation_cost(a->size,i);
+        pos_a = target_pos_in_a(a, cur->index);
+        cost_a = rotation_cost(b->size, pos_a);
+        common = save_cost(cost_a, cost_b, cur);
+        set_commands(cost_a,cost_b, common,cur);
+        cur = cur->next;
+        i++;
+    }
+}
+
+void count_commands_tob(t_stack *a, t_stack *b)
 {
     t_node *cur;
     int     i;
