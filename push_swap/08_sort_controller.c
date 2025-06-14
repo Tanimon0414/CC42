@@ -6,43 +6,11 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:45:43 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/14 16:32:13 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/14 17:45:41 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	move_node_tob(int idx, t_stack *a, t_stack *b)
-{
-	t_node	*cur;
-	int		i;
-
-	cur = a->top;
-	i = 0;
-	while (i < idx)
-	{
-		cur = cur->next;
-		i++;
-	}
-	exec_rot(a, b, &cur->command);
-	pb(a, b, 1);
-}
-
-static void	move_node_toa(int idx, t_stack *b, t_stack *a)
-{
-	t_node	*cur;
-	int		i;
-
-	cur = b->top;
-	i = 0;
-	while (i < idx)
-	{
-		cur = cur->next;
-		i++;
-	}
-	exec_rot_rev(a, b, &cur->command);
-	pa(a, b, 1);
-}
 
 static void	exec_rot(t_stack *a, t_stack *b, t_command *c)
 {
@@ -74,6 +42,38 @@ static void	exec_rot_rev(t_stack *a, t_stack *b, t_command *c)
 		ra(a, 1);
 	while (c->rra--)
 		rra(a, 1);
+}
+
+static void	move_node_tob(int idx, t_stack *a, t_stack *b)
+{
+	t_node	*cur;
+	int		i;
+
+	cur = a->top;
+	i = 0;
+	while (i < idx)
+	{
+		cur = cur->next;
+		i++;
+	}
+	exec_rot(a, b, &cur->command);
+	pb(a, b, 1);
+}
+
+static void	move_node_toa(int idx, t_stack *b, t_stack *a)
+{
+	t_node	*cur;
+	int		i;
+
+	cur = b->top;
+	i = 0;
+	while (i < idx)
+	{
+		cur = cur->next;
+		i++;
+	}
+	exec_rot_rev(a, b, &cur->command);
+	pa(a, b, 1);
 }
 
 void	sort_stacks(t_stack *a, t_stack *b)

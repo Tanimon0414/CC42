@@ -23,6 +23,7 @@ SRCS := \
 	11_target_position.c \
 	12_sort_utils.c \
 	13_utils.c \
+	14_cost_utils.c \
 	99_error.c
 
 OBJS := $(SRCS:.c=.o)

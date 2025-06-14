@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:52:24 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/14 15:52:27 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/14 17:40:58 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void				sort_three(t_stack *a);
 /* 10_cost_calculation.c */
 void				count_commands_toa(t_stack *a, t_stack *b);
 void				count_commands_tob(t_stack *a, t_stack *b);
-int					rotation_cost(int size, int pos);
 
 /* 11_target_position.c */
 int					target_pos_in_a(t_stack *a, int idx);
@@ -116,6 +115,12 @@ void				init_commands(t_stack *stack_a);
 int					ft_min(int n1, int n2);
 int					ft_max(int n1, int n2);
 int					ft_abs(int n);
+
+/*14_cost_utils.c*/
+void				set_commands(int cost_a, int cost_b, int common,
+						t_node *cur);
+int					save_cost(int cost_a, int cost_b, t_node *cur);
+int					rotation_cost(int size, int pos);
 
 /* 99_error.c */
 void				print_error_and_exit(void);
