@@ -5,9 +5,8 @@
 # define ATOL_ERROR_VALUE ((long)INT_MAX + 1LL)
 # define LLONG_CONVERSION_ERROR (LLONG_MAX - 1)
 
-#define TO_A 0  /* count_commands() の方向フラグ */
-#define TO_B 1
-
+# define TO_A 0 /* count_commands() の方向フラグ */
+# define TO_B 1
 
 # include "libft/ft_printf.h"
 # include "libft/libft.h"
@@ -76,20 +75,20 @@ void				add_node_to_front(t_stack *stack, t_node *new_node);
 void				set_index(t_stack *stack_a);
 int					check_sorted(t_stack *stack);
 
-void sort_stacks(t_stack *a, t_stack *b);
-void sort_stacks_small(t_stack *stack_a, t_stack *stack_b);
-void init_commands(t_stack *stack_a);
-void count_commands_tob(t_stack *a, t_stack *b);
-void count_commands_toa(t_stack *a, t_stack *b);
-int rotation_cost(int size, int pos);
-int target_pos_in_b(t_stack *b, int idx);
-int target_pos_in_a(t_stack *a, int idx);
-int find_min_pos(t_stack *s);
-void sort_three(t_stack *a);
+void				sort_stacks(t_stack *a, t_stack *b);
+void				sort_stacks_small(t_stack *stack_a, t_stack *stack_b);
+void				init_commands(t_stack *stack_a);
+void				count_commands_tob(t_stack *a, t_stack *b);
+void				count_commands_toa(t_stack *a, t_stack *b);
+int					rotation_cost(int size, int pos);
+int					target_pos_in_b(t_stack *b, int idx);
+int					target_pos_in_a(t_stack *a, int idx);
+int					find_min_pos(t_stack *s);
+void				sort_three(t_stack *a);
 
-int strict_atoi(const char *str, int *out);
-int     ft_min(int n1, int n2);
-int     ft_max(int n1, int n2);
-int     ft_abs(int n);
+int					strict_atoi(const char *str, int *out);
+int					ft_min(int n1, int n2);
+int					ft_max(int n1, int n2);
+int					ft_abs(int n);
 
 #endif

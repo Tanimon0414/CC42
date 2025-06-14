@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 18:20:35 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/06 14:24:29 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/13 17:04:37 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,16 @@ void	check_and_set(int argc, char **argv, t_stack **stack_a_ptr,
 		t_stack **stack_b_ptr)
 {
 	int		i;
-	int	num_val;
+	int		num_val;
 	t_node	*new_node;
+
 	i = 1;
 	while (i < argc)
 	{
 		if (!strict_atoi(argv[i], &num_val))
-        	stack_error(stack_a_ptr, stack_b_ptr);
+			stack_error(stack_a_ptr, stack_b_ptr);
 		if (!dup_check(*stack_a_ptr, num_val))
-            stack_error(stack_a_ptr, stack_b_ptr);
+			stack_error(stack_a_ptr, stack_b_ptr);
 		new_node = create_and_init_node(num_val, stack_a_ptr, stack_b_ptr);
 		add_node_to_back(*stack_a_ptr, new_node);
 		i++;
