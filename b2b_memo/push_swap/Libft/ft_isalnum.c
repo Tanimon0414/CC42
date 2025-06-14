@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+        +:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+
+        +#+        */
+/*                                                +#+#+#+#+#+
+        +#+           */
 /*   Created: 2022/01/04 17:46:23 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/10 09:13:13 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,7 +15,5 @@
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
-{
-	return (ft_isdigit(c) || ft_isalpha(c));
-}
+
+int	ft_isalnum(int c) { return (ft_isdigit(c) || ft_isalpha(c)); }

@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   node_util.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kishigam <kishigam@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: kishigam <kishigam@student.42tokyo.jp>     +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2022/10/15 09:05:53 by kishigam          #+#    #+#             */
 /*   Updated: 2022/10/22 09:00:50 by kishigam         ###   ########.fr       */
 /*                                                                            */
@@ -12,9 +15,10 @@
 
 #include "../include/push_swap.h"
 
+
 t_stack	*create_new_node(int value)
 {
-	t_stack	*node;
+	t_stack *node;
 
 	node = (t_stack *)malloc(sizeof(t_stack));
 	if (!node)
@@ -27,7 +31,7 @@ t_stack	*create_new_node(int value)
 
 t_stack	*find_last_node(t_stack *node)
 {
-	t_stack	*tmp;
+	t_stack *tmp;
 
 	if (node == NULL)
 		return (NULL);
@@ -39,7 +43,7 @@ t_stack	*find_last_node(t_stack *node)
 
 void	add_node_back(t_stack **node, t_stack *new)
 {
-	t_stack	*tmp;
+	t_stack *tmp;
 
 	if (node == NULL)
 		return ;

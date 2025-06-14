@@ -2,7 +2,8 @@
 
 #include <unistd.h>
 
-int		word_len(char *str)
+
+int	word_len(char *str)
 {
 	int i = 0;
 	while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
@@ -28,7 +29,7 @@ void	expand_str(char *str)
 	}
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc == 2)
 		expand_str(argv[1]);

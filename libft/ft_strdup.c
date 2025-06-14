@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2025/04/25 20:32:15 by atanimot          #+#    #+#             */
 /*   Updated: 2025/04/28 14:20:46 by atanimot         ###   ########.fr       */
 /*                                                                            */
@@ -12,10 +15,11 @@
 
 #include "libft.h"
 
+
 char	*ft_strdup(const char *s1)
 {
-	int		i;
-	char	*dup;
+	int i;
+	char *dup;
 
 	i = 0;
 	while (s1[i])

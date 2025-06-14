@@ -5,8 +5,8 @@ Allowed functions: atoi, printf, write
 --------------------------------------------------------------------------------
 
 Escribe un programa que tenga tres cadenas:
-- El primero y el tercero son representaciones de números enteros con signo de base 10.
-  que caben en un int.
+- El primero y el tercero son representaciones de números enteros con signo de
+base 10. que caben en un int.
 - El segundo es un operador aritmético elegido entre: + - * / %
 
 El programa debe mostrar el resultado de la operación aritmética solicitada,
@@ -27,24 +27,24 @@ $> ./do_op "1" "+" "-43" | cat -e
 -42$
 $> ./do_op | cat -e
 */
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+
 //+ - * / %
-int main(int argc, char **argv)
-{
-	if (argc == 4)
-	{
-		if (argv[2][0] == '+')
-			printf("%d", atoi(argv[1]) + atoi(argv[3]));
-		else if (argv[2][0] == '-')
-			printf("%d", atoi(argv[1]) + atoi(argv[3]));
-		else if (argv[2][0] == '*')
-			printf("%d", atoi(argv[1]) * atoi(argv[3]));
-		else if (argv[2][0] == '/')
-			printf("%d", atoi(argv[1]) / atoi(argv[3]));
-		else if (argv[2][0] == '%')
-			printf("%d", atoi(argv[1]) % atoi(argv[3]));
-	}
-	printf("\n"); 
-	return 0; 
+int	main(int argc, char **argv) {
+  if (argc == 4) {
+    if (argv[2][0] == '+')
+      printf("%d", atoi(argv[1]) + atoi(argv[3]));
+    else if (argv[2][0] == '-')
+      printf("%d", atoi(argv[1]) + atoi(argv[3]));
+    else if (argv[2][0] == '*')
+      printf("%d", atoi(argv[1]) * atoi(argv[3]));
+    else if (argv[2][0] == '/')
+      printf("%d", atoi(argv[1]) / atoi(argv[3]));
+    else if (argv[2][0] == '%')
+      printf("%d", atoi(argv[1]) % atoi(argv[3]));
+  }
+  printf("\n");
+  return (0);
 }

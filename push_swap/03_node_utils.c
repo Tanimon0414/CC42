@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commands_p.c                                       :+:      :+:    :+:   */
+/*   03_node_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 16:17:42 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/05 20:53:27 by atanimot         ###   ########.fr       */
+/*   Created: 2025/06/14 15:23:02 by atanimot          #+#    #+#             */
+/*   Updated: 2025/06/14 15:46:04 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_node	*create_and_init_node(long num_val, t_stack **sa_ptr, t_stack **sb_ptr)
+{
+	t_node	*node;
+
+	node = (t_node *)malloc(sizeof(t_node));
+	if (!node)
+		stack_error(sa_ptr, sb_ptr);
+	node->data = (int)num_val;
+	node->index = 0;
+	node->next = NULL;
+	node->prev = NULL;
+	return (node);
+}
 
 void	add_node_to_back(t_stack *stack, t_node *new_node)
 {
@@ -33,6 +47,32 @@ void	add_node_to_back(t_stack *stack, t_node *new_node)
 		new_node->next = head;
 		tail->next = new_node;
 		head->prev = new_node;
+	}
+	stack->size++;
+}
+
+void	add_node_to_front(t_stack *stack, t_node *new_node)
+{
+	t_node	*head;
+	t_node	*tail;
+
+	if (!stack || !new_node)
+		return ;
+	if (stack->top == NULL)
+	{
+		stack->top = new_node;
+		new_node->next = new_node;
+		new_node->prev = new_node;
+	}
+	else
+	{
+		head = stack->top;
+		tail = head->prev;
+		new_node->prev = tail;
+		new_node->next = head;
+		head->prev = new_node;
+		tail->next = new_node;
+		stack->top = new_node;
 	}
 	stack->size++;
 }
@@ -62,54 +102,23 @@ t_node	*pop_node_from_front(t_stack *stack)
 	return (popped_node);
 }
 
-void	add_node_to_front(t_stack *stack, t_node *new_node)
+void	elswap(t_stack *stack)
 {
-	t_node	*head;
-	t_node	*tail;
+	t_node	*first;
+	t_node	*second;
+	t_node	*third;
+	t_node	*last;
 
-	if (!stack || !new_node)
-		return ;
-	if (stack->top == NULL)
-	{
-		stack->top = new_node;
-		new_node->next = new_node;
-		new_node->prev = new_node;
-	}
-	else
-	{
-		head = stack->top;
-		tail = head->prev;
-		new_node->prev = tail;
-		new_node->next = head;
-		head->prev = new_node;
-		tail->next = new_node;
-		stack->top = new_node;
-	}
-	stack->size++;
-}
-
-void	pa(t_stack *stack_a, t_stack *stack_b, int print_op)
-{
-	t_node	*head_b;
-
-	head_b = pop_node_from_front(stack_b);
-	if (!head_b)
-		return ;
-	add_node_to_front(stack_a, head_b);
-	if (print_op)
-		ft_printf("pa\n");
-	return ;
-}
-
-void	pb(t_stack *stack_a, t_stack *stack_b, int print_op)
-{
-	t_node	*head_a;
-
-	head_a = pop_node_from_front(stack_a);
-	if (!head_a)
-		return ;
-	add_node_to_front(stack_b, head_a);
-	if (print_op)
-		ft_printf("pb\n");
+	first = stack->top;
+	second = first->next;
+	last = first->prev;
+	third = second->next;
+	stack->top = second;
+	second->prev = last;
+	second->next = first;
+	first->prev = second;
+	first->next = third;
+	last->next = second;
+	third->prev = first;
 	return ;
 }

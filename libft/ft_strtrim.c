@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+		+:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+
+		+#+        */
+/*                                                +#+#+#+#+#+
+		+#+           */
 /*   Created: 2025/04/26 16:27:14 by atanimot          #+#    #+#             */
 /*   Updated: 2025/04/30 13:07:59 by atanimot         ###   ########.fr       */
 /*                                                                            */
@@ -12,12 +15,13 @@
 
 #include "libft.h"
 
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	start;
-	size_t	end;
-	size_t	len;
-	char	*res;
+	size_t start;
+	size_t end;
+	size_t len;
+	char *res;
 
 	if (!s1 || !set)
 		return (NULL);

@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/01/04 17:35:04 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/10 09:21:25 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,7 +15,7 @@
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
-{
-	return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
+
+int	ft_isalpha(int c) {
+  return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
 }

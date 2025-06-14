@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kishigam <kishigam@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: kishigam <kishigam@student.42tokyo.jp>     +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2022/10/20 07:24:59 by kishigam          #+#    #+#             */
 /*   Updated: 2022/10/22 09:01:10 by kishigam         ###   ########.fr       */
 /*                                                                            */
@@ -12,10 +15,11 @@
 
 #include "../include/push_swap.h"
 
+
 int	rra(t_stack **a, int is_output)
 {
-	t_stack	*head;
-	t_stack	*last;
+	t_stack *head;
+	t_stack *last;
 
 	if (stack_size(*a) < 2)
 		return (1);
@@ -39,8 +43,8 @@ int	rra(t_stack **a, int is_output)
 
 int	rrb(t_stack **b, int is_output)
 {
-	t_stack	*head;
-	t_stack	*last;
+	t_stack *head;
+	t_stack *last;
 
 	if (stack_size(*b) < 2)
 		return (1);

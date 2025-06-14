@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/03/08 17:37:39 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/09 11:14:40 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,9 +15,10 @@
 
 #include "libft.h"
 
+
 static int	is_trim_possible(char c, char const *set)
 {
-	int		count;
+	int count;
 
 	count = -1;
 	while (set[++count])
@@ -25,8 +29,8 @@ static int	is_trim_possible(char c, char const *set)
 
 static int	get_size(char const *s1, char const *set)
 {
-	int		count;
-	int		size;
+	int count;
+	int size;
 
 	size = ft_strlen(s1);
 	count = 0;
@@ -37,9 +41,9 @@ static int	get_size(char const *s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		count;
-	int		size;
-	char	*str;
+	int count;
+	int size;
+	char *str;
 
 	count = 0;
 	size = 0;

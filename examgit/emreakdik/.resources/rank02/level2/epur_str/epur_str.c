@@ -2,14 +2,15 @@
 
 #include <unistd.h>
 
-int		skip_whitespace(char *str, int i)
+
+int	skip_whitespace(char *str, int i)
 {
 	while (str[i] == ' ' || str[i] == '\t')
 		++i;
 	return (i);
 }
 
-int		ft_wordlen(char *str)
+int	ft_wordlen(char *str)
 {
 	int i = 0;
 
@@ -37,7 +38,7 @@ void	epur_str(char *str)
 	}
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc == 2)
 		epur_str(argv[1]);

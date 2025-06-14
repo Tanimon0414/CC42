@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/03/08 14:15:00 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/10 10:06:32 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,9 +15,9 @@
 
 #include "libft.h"
 
-int	ft_tolower(int c)
-{
-	if ('A' <= c && c <= 'Z')
-		return (c - ('A' - 'a'));
-	return (c);
+
+int	ft_tolower(int c) {
+  if ('A' <= c && c <= 'Z')
+    return (c - ('A' - 'a'));
+  return (c);
 }

@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kishigam <kishigam@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: kishigam <kishigam@student.42tokyo.jp>     +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2022/06/12 20:05:09 by kishigam          #+#    #+#             */
 /*   Updated: 2022/07/19 08:42:42 by kishigam         ###   ########.fr       */
 /*                                                                            */
@@ -12,10 +15,11 @@
 
 #include "get_next_line.h"
 
+
 char	*ft_read_to_next_line(int fd, char *save)
 {
-	int		len;
-	char	*buf;
+	int len;
+	char *buf;
 
 	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
@@ -41,8 +45,8 @@ char	*ft_read_to_next_line(int fd, char *save)
 
 char	*ft_get_line(char *save)
 {
-	int		i;
-	char	*line;
+	int i;
+	char *line;
 
 	i = 0;
 	if (!save[i])
@@ -69,9 +73,9 @@ char	*ft_get_line(char *save)
 
 char	*ft_save(char *save)
 {
-	int		i;
-	int		j;
-	char	*new_save;
+	int i;
+	int j;
+	char *new_save;
 
 	i = 0;
 	j = 0;
@@ -95,8 +99,8 @@ char	*ft_save(char *save)
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-	static char	*save;
+	char *line;
+	static char *save;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);

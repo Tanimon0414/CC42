@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commands_r.c                                       :+:      :+:    :+:   */
+/*   operations_push.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 19:34:23 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/06 14:29:22 by atanimot         ###   ########.fr       */
+/*   Created: 2025/06/06 14:45:20 by atanimot          #+#    #+#             */
+/*   Updated: 2025/06/14 15:22:59 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_stack *stack, int print_op)
+void	pa(t_stack *stack_a, t_stack *stack_b, int print_op)
 {
-	if (!stack || !stack->top || stack->size < 2)
+	t_node	*head_b;
+
+	head_b = pop_node_from_front(stack_b);
+	if (!head_b)
 		return ;
-	stack->top = stack->top->next;
+	add_node_to_front(stack_a, head_b);
 	if (print_op)
-		ft_printf("ra\n");
+		ft_printf("pa\n");
 	return ;
 }
 
-void	rb(t_stack *stack, int print_op)
+void	pb(t_stack *stack_a, t_stack *stack_b, int print_op)
 {
-	if (!stack || !stack->top || stack->size < 2)
-		return ;
-	stack->top = stack->top->next;
-	if (print_op)
-		ft_printf("rb\n");
-	return ;
-}
+	t_node	*head_a;
 
-void	rr(t_stack *stack_a, t_stack *stack_b, int print_op)
-{
-	ra(stack_a, 0);
-	rb(stack_b, 0);
+	head_a = pop_node_from_front(stack_a);
+	if (!head_a)
+		return ;
+	add_node_to_front(stack_b, head_a);
 	if (print_op)
-		ft_printf("rr\n");
+		ft_printf("pb\n");
 	return ;
 }

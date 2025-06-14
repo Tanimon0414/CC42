@@ -1,9 +1,10 @@
 
 #include <unistd.h>
 
+
 int	main(int argc, char **argv)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (argc == 2 && argv[1][i])

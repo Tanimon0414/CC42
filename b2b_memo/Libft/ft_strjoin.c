@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kishigam <kishigam@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: kishigam <kishigam@student.42tokyo.jp>     +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/03/08 17:32:40 by keisuke           #+#    #+#             */
 /*   Updated: 2022/07/15 14:44:02 by kishigam         ###   ########.fr       */
 /*                                                                            */
@@ -12,11 +15,12 @@
 
 #include "libft.h"
 
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
-	char	*str;
+	int i;
+	int j;
+	char *str;
 
 	i = -1;
 	j = -1;

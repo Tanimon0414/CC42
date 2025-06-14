@@ -32,8 +32,9 @@ $
 $> ./fprime 42 21 | cat -e
 $
 */
- #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
+
 
 int	main(int argc, char *argv[])
 {

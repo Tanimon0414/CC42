@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/03/08 14:10:48 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/10 10:04:43 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,9 +15,10 @@
 
 #include "libft.h"
 
+
 int	ft_toupper(int c)
 {
 	if ('a' <= c && c <= 'z')
-		return (c +('A' - 'a'));
+		return (c + ('A' - 'a'));
 	return (c);
 }

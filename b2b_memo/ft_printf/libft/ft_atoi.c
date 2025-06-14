@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/03/08 16:26:37 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/10 16:59:53 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,10 +15,11 @@
 
 #include "libft.h"
 
+
 int	ft_atoi(const char *str)
 {
-	long int	res;
-	int			num;
+	long int res;
+	int num;
 
 	res = 0;
 	num = 1;

@@ -14,58 +14,54 @@ char	*ft_itoa(int nbr);
 #include <stdio.h>
 #include <stdlib.h>
 
+
 /*
 ej:  0 y -42 ejemplos recomendados
 
 1. saltas negativos l-37
 2. longitud dividiendo entre 10 l-40
-3. reservas cadena con esa longitud l-47 
+3. reservas cadena con esa longitud l-47
 4. añades el nulo para cerrar la cadena l-50
 5. si hubiera sido 0 devuelves 0 l-52
 6. es negativo añado - en posicion 0 l-58
 7. copio la cadena hacia atras l-64
 8. devuelvo result l-71
 */
-char *ft_itoa(int nbr) 
-{
-    if(nbr == -2147483648)
-        return("-2147483648\0"); //max int
+char	*ft_itoa(int nbr) {
+  if (nbr == -2147483648)
+    return ("-2147483648\0"); // max int
 
-    int n = nbr;  
-    int len = 0;  
-    char *result;
+  int n = nbr;
+  int len = 0;
+  char *result;
 
-    if (nbr <= 0)
-        len++;
-    
-    while (n) 
-    {
-        n /= 10;
-        len++;
-    }
+  if (nbr <= 0)
+    len++;
 
-    if (!(result = (char *)malloc(sizeof(char) * (len + 1)))) 
-        return NULL; 
-    
-    result[len] = '\0'; 
-    
-    if (nbr == 0)
-    {
-        result[0] = '0';  
-        return result;
-    }
-    
-    if (nbr < 0) 
-    {
-        result[0] = '-';
-        nbr = -nbr;
-    }
-    
-    while (nbr) 
-    {
-        result[--len] = nbr % 10 + '0';  
-        nbr /= 10;  
-    }
+  while (n) {
+    n /= 10;
+    len++;
+  }
 
-    return result;  
+  if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
+    return (NULL);
+
+  result[len] = '\0';
+
+  if (nbr == 0) {
+    result[0] = '0';
+    return (result);
+  }
+
+  if (nbr < 0) {
+    result[0] = '-';
+    nbr = -nbr;
+  }
+
+  while (nbr) {
+    result[--len] = nbr % 10 + '0';
+    nbr /= 10;
+  }
+
+  return (result);
 }

@@ -2,6 +2,7 @@
 
 #include <unistd.h>
 
+
 void	ft_putnbr(int n)
 {
 	char digit;
@@ -13,9 +14,9 @@ void	ft_putnbr(int n)
 	write(1, &digit, 1);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	(void)argv;		// Silence 'unused parameter' error
+	(void)argv; // Silence 'unused parameter' error
 
 	ft_putnbr(argc - 1);
 	write(1, "\n", 1);

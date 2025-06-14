@@ -2,23 +2,19 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2025/05/08 18:28:53 by atanimot          #+#    #+#             */
-/*   Updated: 2025/05/09 14:22:38 by atanimot         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/14 17:12:32 by atanimot          #+#    #+#             */
+/*   Updated: 2025/06/14 17:12:36 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (!lst || !del)
 		return ;

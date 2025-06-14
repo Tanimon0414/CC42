@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   pf_putstr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2025/05/07 19:40:51 by atanimot          #+#    #+#             */
 /*   Updated: 2025/05/11 09:19:17 by atanimot         ###   ########.fr       */
 /*                                                                            */
@@ -13,9 +16,10 @@
 #include "ft_printf.h"
 #include "libft.h"
 
+
 int	pf_putstr(const char *s)
 {
-	int	len;
+	int len;
 
 	if (!s)
 		s = "(null)";

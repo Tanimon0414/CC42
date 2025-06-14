@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+        +:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+
+        +#+        */
+/*                                                +#+#+#+#+#+
+        +#+           */
 /*   Created: 2022/01/04 18:25:34 by keisuke           #+#    #+#             */
 /*   Updated: 2022/02/14 02:55:39 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,7 +15,5 @@
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, '\0', n);
-}
+
+void	ft_bzero(void *s, size_t n) { ft_memset(s, '\0', n); }

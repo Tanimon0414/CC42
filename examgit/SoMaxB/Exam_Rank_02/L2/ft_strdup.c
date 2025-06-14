@@ -11,11 +11,12 @@ char	*ft_strdup(char *src);
 */
 #include <stdlib.h>
 
+
 //#include <stdio.h>
 
 int	ft_strlen(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (str[i])
@@ -25,9 +26,9 @@ int	ft_strlen(char *str)
 
 char	*ft_strdup(char *src)
 {
-	int		i;
-	char	*copia;
-	int		len;
+	int i;
+	char *copia;
+	int len;
 
 	i = 0;
 	len = ft_strlen(src) + 1;
@@ -46,7 +47,8 @@ int	main(void)
 {
 	char	str[] = "holamundo";
 
-	printf("cadena original: %s\n cadena duplicada: %s\n", str, ft_strdup(str));
+	printf("cadena original: %s\n cadena duplicada: %s\n", str,
+		ft_strdup(str));
 	return (0);
 }
 */

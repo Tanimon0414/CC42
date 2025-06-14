@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/08 13:52:37 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/08 14:08:45 by atanimot         ###   ########.fr       */
+/*   Created: 2025/06/05 12:16:12 by atanimot          #+#    #+#             */
+/*   Updated: 2025/06/14 14:24:51 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_sorted(t_stack *stack)
+int	ft_min(int n1, int n2)
 {
-	t_node	*current;
-	int		i;
+	if (n1 <= n2)
+		return (n1);
+	else
+		return (n2);
+}
 
-	current = stack->top;
-	i = 0;
-	while (i < stack->size)
-	{
-		if (current->index != i)
-			break ;
-		current = current->next;
-		i++;
-	}
-	if (i == stack->size)
-    	return (1);
-	return (0);
+int	ft_max(int n1, int n2)
+{
+	if (n1 <= n2)
+		return (n2);
+	else
+		return (n1);
+}
+
+int	ft_abs(int n)
+{
+	if (n < 0)
+		n = -n;
+	return (n);
 }

@@ -1,8 +1,9 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "ft_list.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-void ft_putnbr(void *data)
+
+void	ft_putnbr(void *data)
 {
 	int *i;
 
@@ -10,7 +11,7 @@ void ft_putnbr(void *data)
 	printf("%d", *i);
 }
 
-void ft_list_push_front(t_list **begin_list, void *data)
+void	ft_list_push_front(t_list **begin_list, void *data)
 {
 	t_list *new;
 
@@ -20,9 +21,7 @@ void ft_list_push_front(t_list **begin_list, void *data)
 	*begin_list = new;
 }
 
-
-
-int main()
+int	main(void)
 {
 	t_list *list;
 	int i;

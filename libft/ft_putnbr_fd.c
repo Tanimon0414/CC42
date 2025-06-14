@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2025/04/28 21:18:58 by atanimot          #+#    #+#             */
 /*   Updated: 2025/04/30 12:33:47 by atanimot         ###   ########.fr       */
 /*                                                                            */
@@ -12,9 +15,10 @@
 
 #include "libft.h"
 
+
 void	ft_putnbr_fd(int n, int fd)
 {
-	long	nb;
+	long nb;
 
 	nb = n;
 	if (nb < 0)

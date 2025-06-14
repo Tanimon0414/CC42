@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int		is_prime(int n)
+
+int	is_prime(int n)
 {
 	int i = 2;
 
@@ -39,7 +40,7 @@ void	fprime(char *str)
 	}
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc == 2)
 		fprime(argv[1]);

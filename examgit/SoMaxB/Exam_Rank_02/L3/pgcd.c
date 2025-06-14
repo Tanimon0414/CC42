@@ -28,20 +28,21 @@ $> ./pgcd | cat -e
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(int argc, char const *argv[])//MCD
+
+int	main(int argc, char const *argv[]) // MCD
 {
-	int n1 = atoi(argv[1]); 
+	int n1 = atoi(argv[1]);
 	int n2 = atoi(argv[2]);
 
 	if (argc == 3)
 	{
 		while (n2)
 		{
-			int temp = n2; 
-			n2 = n1 % n2; 
-			n1 = temp; 
+			int temp = n2;
+			n2 = n1 % n2;
+			n1 = temp;
 		}
-		printf("%d", n1); 
+		printf("%d", n1);
 	}
 	printf("\n");
 	return (0);

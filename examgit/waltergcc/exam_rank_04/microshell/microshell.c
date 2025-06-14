@@ -1,5 +1,6 @@
 #include "microshell.h"
 
+
 void	err(char *s)
 {
 	while (*s)
@@ -26,9 +27,9 @@ int	cd(char **token, int i)
 
 int	exec(char **token, char **env, int i)
 {
-	int	fd[2];
-	int	g_exit;
-	int	has_pipe = token[i] && !strcmp(token[i], "|");
+	int fd[2];
+	int g_exit;
+	int has_pipe = token[i] && !strcmp(token[i], "|");
 
 	if (has_pipe && pipe(fd) == -1)
 		return (print_err(FAT, NULL));
@@ -37,27 +38,23 @@ int	exec(char **token, char **env, int i)
 	if (pid == 0)
 	{
 		token[i] = NULL;
-		if (has_pipe
-			&& (dup2(fd[1], 1) == -1
-			|| close(fd[0]) == -1
-			|| close(fd[1]) == -1))
+		if (has_pipe && (dup2(fd[1], 1) == -1 || close(fd[0]) == -1
+				|| close(fd[1]) == -1))
 			return (print_err(FAT, NULL));
 		execve(*token, token, env);
 		return (print_err(EXE, *token));
 	}
 	waitpid(pid, &g_exit, 0);
-	if (has_pipe
-		&& (dup2(fd[0], 0) == -1
-		|| close(fd[0]) == -1
-		|| close(fd[1]) == -1))
+	if (has_pipe && (dup2(fd[0], 0) == -1 || close(fd[0]) == -1
+			|| close(fd[1]) == -1))
 		return (print_err(FAT, NULL));
 	return (WEXITSTATUS(g_exit));
 }
 
-int main(int ac, char **token, char **env)
+int	main(int ac, char **token, char **env)
 {
-	int	i = 0;
-	int	g_exit = 0;
+	int i = 0;
+	int g_exit = 0;
 	if (ac > 1)
 	{
 		while (token[i] && token[++i])

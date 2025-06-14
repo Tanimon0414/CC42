@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   pf_putnbr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2025/05/07 19:40:46 by atanimot          #+#    #+#             */
 /*   Updated: 2025/05/11 09:19:54 by atanimot         ###   ########.fr       */
 /*                                                                            */
@@ -12,12 +15,13 @@
 
 #include "ft_printf.h"
 
+
 int	pf_putnbr(long n)
 {
-	char	buf[20];
-	int		i;
-	int		count;
-	long	nb;
+	char buf[20];
+	int i;
+	int count;
+	long nb;
 
 	i = 0;
 	count = 0;

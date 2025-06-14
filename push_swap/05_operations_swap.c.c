@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commands_s.c                                       :+:      :+:    :+:   */
+/*   operations_swap.c.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 13:45:43 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/06 14:44:07 by atanimot         ###   ########.fr       */
+/*   Created: 2025/06/05 16:17:42 by atanimot          #+#    #+#             */
+/*   Updated: 2025/06/14 15:24:36 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	elswap(t_stack *stack)
-{
-	t_node	*first;
-	t_node	*second;
-	t_node	*third;
-	t_node	*last;
-
-	first = stack->top;
-	second = first->next;
-	last = first->prev;
-	third = second->next;
-	stack->top = second;
-	second->prev = last;
-	second->next = first;
-	first->prev = second;
-	first->next = third;
-	last->next = second;
-	third->prev = first;
-	return ;
-}
 
 void	sa(t_stack *stack_a, int print_op)
 {

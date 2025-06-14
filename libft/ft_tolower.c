@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+        +:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+
+        +#+        */
+/*                                                +#+#+#+#+#+
+        +#+           */
 /*   Created: 2025/04/25 18:49:58 by atanimot          #+#    #+#             */
 /*   Updated: 2025/04/25 18:50:35 by atanimot         ###   ########.fr       */
 /*                                                                            */
@@ -12,9 +15,9 @@
 
 #include "libft.h"
 
-int	ft_tolower(int c)
-{
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	return (c);
+
+int	ft_tolower(int c) {
+  if (c >= 'A' && c <= 'Z')
+    return (c + 32);
+  return (c);
 }

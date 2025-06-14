@@ -17,7 +17,8 @@ Examples:
 
 $> ./first_word "FOR PONY" | cat -e
 FOR$
-$> ./first_word "this        ...    is sparta, then again, maybe    not" | cat -e
+$> ./first_word "this        ...    is sparta, then again, maybe    not" | cat
+	-e
 this$
 $> ./first_word "   " | cat -e
 $
@@ -28,15 +29,18 @@ lorem,ipsum$
 $> */
 #include <unistd.h>
 
-int main (int contador, char **cadena)
+
+int	main(int contador, char **cadena)
 {
-	int i = 0; //index
-	
-	if (contador == 2) //second arg 
+	int i = 0; // index
+
+	if (contador == 2) // second arg
 	{
-		while (cadena[1][i] == ' ' || cadena[1][i] == '	') //ignores spaces and tabs
+		while (cadena[1][i] == ' ' || cadena[1][i] == '	')
+				// ignores spaces and tabs
 			i++;
-		while (!(cadena[1][i] == ' ' || cadena[1][i] == '	') && cadena[1][i]) //write the word and stops in tabs and spaces
+		while (!(cadena[1][i] == ' ' || cadena[1][i] == '	') && cadena[1][i])
+				// write the word and stops in tabs and spaces
 			write(1, &cadena[1][i++], 1);
 	}
 	write(1, "\n", 1);

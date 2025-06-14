@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/03/09 08:21:17 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/10 09:15:02 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,9 +15,10 @@
 
 #include "libft.h"
 
+
 static char	*int_to_str(int n, int pow_ten, short sign, char *out)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	if (sign == -1)
@@ -31,10 +35,10 @@ static char	*int_to_str(int n, int pow_ten, short sign, char *out)
 
 char	*ft_itoa(int n)
 {
-	size_t	i;
-	char	*out;
-	short	sign;
-	int		pow_ten;
+	size_t i;
+	char *out;
+	short sign;
+	int pow_ten;
 
 	i = 1;
 	pow_ten = 1;

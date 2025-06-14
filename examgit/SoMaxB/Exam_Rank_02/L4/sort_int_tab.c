@@ -6,7 +6,7 @@ Allowed functions:
 
 Write the following function:
 
-void sort_int_tab(int *tab, unsigned int size);
+void	sort_int_tab(int *tab, unsigned int size);
 
 It must sort (in-place) the 'tab' int array, that contains exactly 'size'
 members, in ascending order.
@@ -18,8 +18,8 @@ Input is always coherent.
 
 void	sort_int_tab(int *tab, unsigned int size)
 {
-	unsigned int	i = 0;
-	int	temp;
+	unsigned int i = 0;
+	int temp;
 
 	while (i < (size - 1)) // {5, 2, 9, 1, 5, 6}
 	{
@@ -35,7 +35,7 @@ void	sort_int_tab(int *tab, unsigned int size)
 	}
 }
 /*
-int main()
+int	main(void)
 {
 	int tab[] = {5, 2, 9, 1, 5, 6};
 	unsigned int size = sizeof(tab) / sizeof(tab[0]);
@@ -48,7 +48,7 @@ int main()
 	}
 	printf("\n");
 
-	return 0;
+	return (0);
 }
 
 */

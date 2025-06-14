@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"stdlib.h": "c",
-		"stddef.h": "c"
-	}
+		"stddef.h": "c",
+		"libft.h": "c"
+	},
+	"cmake.ignoreCMakeListsMissing": true
 }

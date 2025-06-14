@@ -15,8 +15,8 @@ int	ft_atoi(const char *str);
 */
 int	ft_atoi(const char *str)
 {
-	int	res;
-	int	sign;
+	int res;
+	int sign;
 
 	res = 0;
 	sign = 1;

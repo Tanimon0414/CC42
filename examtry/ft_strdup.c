@@ -4,7 +4,7 @@
 
 size_t	ft_strlen(char *src)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (src[i])
@@ -14,9 +14,9 @@ size_t	ft_strlen(char *src)
 
 char	*ft_strdup(char *src)
 {
-	char	*dup;
-	size_t	len;
-	size_t	i;
+	char *dup;
+	size_t len;
+	size_t i;
 
 	i = 0;
 	len = ft_strlen(src);
@@ -34,9 +34,10 @@ char	*ft_strdup(char *src)
 
 #include <string.h>
 
+
 int	main(void)
 {
-	char	*src;
+	char *src;
 
 	src = "Ya-man   !!";
 	printf("%s\n", ft_strdup(src));

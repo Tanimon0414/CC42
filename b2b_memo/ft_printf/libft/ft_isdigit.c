@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/01/04 17:38:35 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/10 10:17:07 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,7 +15,5 @@
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
-{
-	return ('0' <= c && c <= '9');
-}
+
+int	ft_isdigit(int c) { return ('0' <= c && c <= '9'); }

@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stacks.c                                      :+:      :+:    :+:   */
+/*   01_input_parsing.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 18:20:35 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/13 17:04:37 by atanimot         ###   ########.fr       */
+/*   Created: 2025/06/14 15:19:09 by atanimot          #+#    #+#             */
+/*   Updated: 2025/06/14 15:44:23 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	initialize_stacks(t_stack **stack_a_ptr, t_stack **stack_b_ptr)
+static int	check_overflow(long long acc, int digit, int sign)
 {
-	*stack_a_ptr = (t_stack *)malloc(sizeof(t_stack));
-	if (!(*stack_a_ptr))
-		print_error_and_exit();
-	(*stack_a_ptr)->top = NULL;
-	(*stack_a_ptr)->size = 0;
-	*stack_b_ptr = (t_stack *)malloc(sizeof(t_stack));
-	if (!(*stack_b_ptr))
+	if (sign == 1)
 	{
-		clear_stack(stack_a_ptr);
-		print_error_and_exit();
+		if (acc > (INT_MAX - digit) / 10)
+			return (0);
 	}
-	(*stack_b_ptr)->top = NULL;
-	(*stack_b_ptr)->size = 0;
+	else
+	{
+		if (acc > (-(long long)INT_MIN - digit) / 10)
+			return (0);
+	}
+	return (1);
 }
 
 static int	dup_check(t_stack *stack_a, int num)
@@ -48,19 +46,42 @@ static int	dup_check(t_stack *stack_a, int num)
 	return (1);
 }
 
-static t_node	*create_and_init_node(long num_val, t_stack **sa_ptr,
-		t_stack **sb_ptr)
+static const char	*parse_sign_and_whitespace(const char *str, int *sign)
 {
-	t_node	*node;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			*sign = -1;
+		str++;
+	}
+	return (str);
+}
 
-	node = (t_node *)malloc(sizeof(t_node));
-	if (!node)
-		stack_error(sa_ptr, sb_ptr);
-	node->data = (int)num_val;
-	node->index = 0;
-	node->next = NULL;
-	node->prev = NULL;
-	return (node);
+int	strict_atoi(const char *str, int *out)
+{
+	long long	acc;
+	int			sign;
+
+	if (!str || !*str)
+		return (0);
+	sign = 1;
+	str = parse_sign_and_whitespace(str, &sign);
+	if (!ft_isdigit((unsigned char)*str))
+		return (0);
+	acc = 0;
+	while (ft_isdigit((unsigned char)*str))
+	{
+		if (!check_overflow(acc, *str - '0', sign))
+			return (0);
+		acc = acc * 10 + (*str - '0');
+		str++;
+	}
+	if (*str != '\0')
+		return (0);
+	*out = (int)(acc * sign);
+	return (1);
 }
 
 void	check_and_set(int argc, char **argv, t_stack **stack_a_ptr,

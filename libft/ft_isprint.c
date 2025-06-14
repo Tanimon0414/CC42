@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2025/04/25 15:00:54 by atanimot          #+#    #+#             */
 /*   Updated: 2025/05/08 20:42:06 by atanimot         ###   ########.fr       */
 /*                                                                            */
@@ -12,7 +15,5 @@
 
 #include "libft.h"
 
-int	ft_isprint(int c)
-{
-	return (c >= 32 && c <= 126);
-}
+
+int	ft_isprint(int c) { return (c >= 32 && c <= 126); }

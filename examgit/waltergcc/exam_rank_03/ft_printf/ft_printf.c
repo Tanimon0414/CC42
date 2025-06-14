@@ -1,9 +1,10 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdarg.h>
 #include <limits.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
 
-int ft_strlen(char *s)
+
+int	ft_strlen(char *s)
 {
 	int i = 0;
 	while (s[i])
@@ -11,7 +12,7 @@ int ft_strlen(char *s)
 	return (i);
 }
 
-int ft_nbrlen(long n)
+int	ft_nbrlen(long n)
 {
 	int i = 0;
 	if (n <= 0)
@@ -27,7 +28,7 @@ int ft_nbrlen(long n)
 	return (i);
 }
 
-int ft_hexlen(unsigned int n)
+int	ft_hexlen(unsigned int n)
 {
 	int i = 0;
 	if (n == 0)
@@ -40,12 +41,12 @@ int ft_hexlen(unsigned int n)
 	return (i);
 }
 
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void ft_putstr(char *s)
+void	ft_putstr(char *s)
 {
 	while (*s)
 	{
@@ -54,7 +55,7 @@ void ft_putstr(char *s)
 	}
 }
 
-void ft_putnbr(long n)
+void	ft_putnbr(long n)
 {
 	if (n < 0)
 	{
@@ -66,7 +67,7 @@ void ft_putnbr(long n)
 	ft_putchar(n % 10 + '0');
 }
 
-void ft_puthex(unsigned int n)
+void	ft_puthex(unsigned int n)
 {
 	char *hex = "0123456789abcdef";
 	if (n >= 16)
@@ -74,9 +75,9 @@ void ft_puthex(unsigned int n)
 	ft_putchar(hex[n % 16]);
 }
 
-int print_str(char *s)
+int	print_str(char *s)
 {
- 	if (!s)
+	if (!s)
 	{
 		ft_putstr("(null)");
 		return (6);
@@ -85,19 +86,19 @@ int print_str(char *s)
 	return (ft_strlen(s));
 }
 
-int print_nbr(int n)
+int	print_nbr(int n)
 {
 	ft_putnbr(n);
 	return (ft_nbrlen(n));
 }
 
-int print_hex(unsigned int n)
+int	print_hex(unsigned int n)
 {
 	ft_puthex(n);
 	return (ft_hexlen(n));
 }
 
-int ft_formats(va_list args, const char *s)
+int	ft_formats(va_list args, const char *s)
 {
 	int i = 0;
 	if (*s == 's')
@@ -109,7 +110,7 @@ int ft_formats(va_list args, const char *s)
 	return (i);
 }
 
-int ft_printf(const char *str, ... )
+int	ft_printf(const char *str, ...)
 {
 	va_list args;
 	va_start(args, str);
@@ -131,8 +132,8 @@ int ft_printf(const char *str, ... )
 	va_end(args);
 	return (i);
 }
-/* 
-int main(void)
+/*
+int	main(void)
 {
 	char s[] = "Hello, World!";
 	char *sn = NULL;
@@ -162,8 +163,10 @@ int main(void)
 	ft = ft_printf("%x %x %x\n", n1, n2, n3);
 	ft_printf("%d\n", ft);
 
-	or = printf("This is a test for %s %s, %d %d %d and %x %x %x\n", s, sn, n1, n2, n3, n1, n2, n3);
+	or = printf("This is a test for %s %s, %d %d %d and %x %x %x\n", s, sn, n1,
+			n2, n3, n1, n2, n3);
 	printf("%d\n", or);
-	ft = ft_printf("This is a test for %s %s, %d %d %d and %x %x %x\n", s, sn, n1, n2, n3, n1, n2, n3);
+	ft = ft_printf("This is a test for %s %s, %d %d %d and %x %x %x\n", s, sn,
+			n1, n2, n3, n1, n2, n3);
 	ft_printf("%d\n", ft);
 } */

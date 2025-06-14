@@ -1,8 +1,9 @@
 #include <unistd.h>
 
+
 void	last_word(char *str)
 {
-	int	j = 0;
+	int j = 0;
 	int i = 0;
 
 	while (str[i])
@@ -18,7 +19,7 @@ void	last_word(char *str)
 	}
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc == 2)
 		last_word(argv[1]);

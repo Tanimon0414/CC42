@@ -1,12 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/14 15:52:24 by atanimot          #+#    #+#             */
+/*   Updated: 2025/06/14 15:52:27 by atanimot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# define ATOL_ERROR_VALUE ((long)INT_MAX + 1LL)
-# define LLONG_CONVERSION_ERROR (LLONG_MAX - 1)
-
-# define TO_A 0 /* count_commands() の方向フラグ */
-# define TO_B 1
 
 # include "libft/ft_printf.h"
 # include "libft/libft.h"
@@ -45,50 +50,76 @@ typedef struct s_stack
 	int				size;
 }					t_stack;
 
-/* ------------------------ Function Prototypes ----------------------------- */
+/* --- 関数プロトタイプ宣言 --- */
 
-/* Stack operations (e.g., operations_basic.c, operations_rotate.c) */
+/* 01_input_parsing.c */
+void				check_and_set(int argc, char **argv, t_stack **sa_ptr,
+						t_stack **sb_ptr);
+int					strict_atoi(const char *str, int *out);
+
+/* 02_stack_init.c */
+void				initialize_stacks(t_stack **stack_a_ptr,
+						t_stack **stack_b_ptr);
+void				set_index(t_stack *stack_a);
+
+/* 03_node_utils.c */
+t_node				*create_and_init_node(long num_val, t_stack **sa_ptr,
+						t_stack **sb_ptr);
+void				add_node_to_back(t_stack *stack, t_node *new_node);
+void				add_node_to_front(t_stack *stack, t_node *new_node);
+t_node				*pop_node_from_front(t_stack *stack);
+void				elswap(t_stack *stack);
+
+/* 04_operations_push.c */
+void				pa(t_stack *stack_a, t_stack *stack_b, int print_op);
+void				pb(t_stack *stack_a, t_stack *stack_b, int print_op);
+
+/* 05_operations_swap.c */
 void				sa(t_stack *stack_a, int print_op);
 void				sb(t_stack *stack_b, int print_op);
 void				ss(t_stack *stack_a, t_stack *stack_b, int print_op);
-void				pa(t_stack *stack_a, t_stack *stack_b, int print_op);
-void				pb(t_stack *stack_a, t_stack *stack_b, int print_op);
+
+/* 06_operations_rotate.c */
 void				ra(t_stack *stack_a, int print_op);
 void				rb(t_stack *stack_b, int print_op);
 void				rr(t_stack *stack_a, t_stack *stack_b, int print_op);
+
+/* 07_operations_rev_rotate.c */
 void				rra(t_stack *stack_a, int print_op);
 void				rrb(t_stack *stack_b, int print_op);
 void				rrr(t_stack *stack_a, t_stack *stack_b, int print_op);
 
-void				print_error_and_exit(void);
-void				clear_stack(t_stack **stack_ptr);
-void				stack_error(t_stack **stack_a_ptr, t_stack **stack_b_ptr);
-
-void				initialize_stacks(t_stack **stack_a_ptr,
-						t_stack **stack_b_ptr);
-void				check_and_set(int argc, char **argv, t_stack **stack_a_ptr,
-						t_stack **stack_b_ptr);
-void				add_node_to_back(t_stack *stack, t_node *new_node);
-t_node				*pop_node_from_front(t_stack *stack);
-void				add_node_to_front(t_stack *stack, t_node *new_node);
-
-void				set_index(t_stack *stack_a);
-int					check_sorted(t_stack *stack);
-
+/* 08_sort_controller.c */
 void				sort_stacks(t_stack *a, t_stack *b);
+
+/* 09_sort_small.c */
 void				sort_stacks_small(t_stack *stack_a, t_stack *stack_b);
-void				init_commands(t_stack *stack_a);
-void				count_commands_tob(t_stack *a, t_stack *b);
-void				count_commands_toa(t_stack *a, t_stack *b);
-int					rotation_cost(int size, int pos);
-int					target_pos_in_b(t_stack *b, int idx);
-int					target_pos_in_a(t_stack *a, int idx);
-int					find_min_pos(t_stack *s);
 void				sort_three(t_stack *a);
 
-int					strict_atoi(const char *str, int *out);
+/* 10_cost_calculation.c */
+void				count_commands_toa(t_stack *a, t_stack *b);
+void				count_commands_tob(t_stack *a, t_stack *b);
+int					rotation_cost(int size, int pos);
+
+/* 11_target_position.c */
+int					target_pos_in_a(t_stack *a, int idx);
+int					target_pos_in_b(t_stack *b, int idx);
+
+/* 12_sort_utils.c */
+void				align_min_on_top(t_stack *a);
+int					find_min_pos(t_stack *s);
+int					search_min(t_stack *a);
+int					check_sorted(t_stack *stack);
+void				init_commands(t_stack *stack_a);
+
+/* 13_utils.c */
 int					ft_min(int n1, int n2);
 int					ft_max(int n1, int n2);
 int					ft_abs(int n);
+
+/* 99_error.c */
+void				print_error_and_exit(void);
+void				clear_stack(t_stack **stack_ptr);
+void				stack_error(t_stack **stack_a_ptr, t_stack **stack_b_ptr);
 
 #endif

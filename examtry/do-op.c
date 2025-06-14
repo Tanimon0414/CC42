@@ -3,10 +3,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+
 int	main(int argc, char **argv)
 {
-	int	a;
-	int	b;
+	int a;
+	int b;
 
 	if (argc == 4 && !argv[2][1])
 	{

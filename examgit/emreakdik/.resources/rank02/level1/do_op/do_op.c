@@ -1,12 +1,13 @@
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
+
 
 int	main(int ac, char **av)
 {
-	int	n1 = 0;
+	int n1 = 0;
 	int n2 = 0;
-	int	res = 0;
+	int res = 0;
 
 	if (ac == 4)
 	{
@@ -18,7 +19,7 @@ int	main(int ac, char **av)
 			res = n1 - n2;
 		else if (av[2][0] == '*')
 			res = n1 * n2;
-		else if (av[2][0]== '/')
+		else if (av[2][0] == '/')
 			res = n1 / n2;
 		else if (av[2][0] == '%')
 			res = n1 % n2;

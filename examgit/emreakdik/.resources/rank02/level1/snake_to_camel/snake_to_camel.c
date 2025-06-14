@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(int argc, char **argv)
+
+int	main(int argc, char **argv)
 {
 	if (argc == 2)
 	{
@@ -16,5 +17,5 @@ int main(int argc, char **argv)
 		}
 	}
 	write(STDOUT_FILENO, "\n", 1);
-	return EXIT_SUCCESS;
+	return (EXIT_SUCCESS);
 }

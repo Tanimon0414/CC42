@@ -21,33 +21,32 @@ $> ./str_capitalizer | cat -e
 $
 $> ./str_capitalizer "a FiRSt LiTTlE TESt" | cat -e
 A First Little Test$
-$> ./str_capitalizer "__SecONd teST A LITtle BiT   Moar comPLEX" "   But... This iS not THAT COMPLEX" "     Okay, this is the last 1239809147801 but not    the least    t" | cat -e
+$> ./str_capitalizer "__SecONd teST A LITtle BiT   Moar comPLEX" "   But... This
+iS not THAT COMPLEX" "     Okay, this is the last 1239809147801 but not    the
+least    t" | cat -e
 __second Test A Little Bit   Moar Complex$
    But... This Is Not That Complex$
-     Okay, This Is The Last 1239809147801 But Not    The Least    T$
+                Okay, This Is The Last 1239809147801 But Not    The Least    T$
 $>
 */
 #include <unistd.h>
 
-int	main(int argc, char **argv)
-{
-	if(argc == 2)
-	{
-		int i = 0;
-		while(argv[1][i])
-		{
-			if ((i == 0 || argv[1][i - 1] == ' ' || argv[1][i - 1] == '\t'))
-			{
-				if ((argv[1][i] >= 'a' && argv[1][i] <= 'z'))
-				 	argv[1][i] -= 32; 
-			}
-			if ((argv[1][i] >= 'A' && argv[1][i] <= 'Z'))
-					argv[1][i] += 32;
-			
-			write(1, &argv[1][i++] , 1); 
-		}
-	}
-	write(1, "\n", 1);
 
-	return 0; 
+int	main(int argc, char **argv) {
+  if (argc == 2) {
+    int i = 0;
+    while (argv[1][i]) {
+      if ((i == 0 || argv[1][i - 1] == ' ' || argv[1][i - 1] == '\t')) {
+        if ((argv[1][i] >= 'a' && argv[1][i] <= 'z'))
+          argv[1][i] -= 32;
+      }
+      if ((argv[1][i] >= 'A' && argv[1][i] <= 'Z'))
+        argv[1][i] += 32;
+
+      write(1, &argv[1][i++], 1);
+    }
+  }
+  write(1, "\n", 1);
+
+  return (0);
 }

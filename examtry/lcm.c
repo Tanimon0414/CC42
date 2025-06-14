@@ -2,7 +2,7 @@
 
 unsigned int	saikou(unsigned int a, unsigned int b)
 {
-	unsigned int	n;
+	unsigned int n;
 
 	if (a < b)
 	{
@@ -29,7 +29,7 @@ unsigned int	saikou(unsigned int a, unsigned int b)
 
 unsigned int	lcm(unsigned int a, unsigned int b)
 {
-	int	hcf;
+	int hcf;
 
 	if (a == 0 || b == 0)
 		return (0);
@@ -39,10 +39,11 @@ unsigned int	lcm(unsigned int a, unsigned int b)
 
 #include <stdio.h>
 
+
 int	main(void)
 {
-	int	a;
-	int	b;
+	int a;
+	int b;
 
 	a = 243;
 	b = 91;

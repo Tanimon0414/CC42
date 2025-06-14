@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/01/04 18:03:44 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/10 10:17:18 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,7 +15,5 @@
 
 #include "libft.h"
 
-int	ft_isprint(int c)
-{
-	return (' ' <= c && c <= '~');
-}
+
+int	ft_isprint(int c) { return (' ' <= c && c <= '~'); }

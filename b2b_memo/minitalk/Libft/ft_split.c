@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/03/09 23:21:06 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/10 01:11:49 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,9 +15,10 @@
 
 #include "libft.h"
 
+
 static size_t	get_list_size(const char *s, char c)
 {
-	size_t	count;
+	size_t count;
 
 	count = 0;
 	while (*s && s++)
@@ -30,8 +34,8 @@ static size_t	get_list_size(const char *s, char c)
 
 static int	fill_list(char const *s, char c, char **list)
 {
-	size_t	i;
-	size_t	len;
+	size_t i;
+	size_t len;
 
 	i = 0;
 	while (*s)
@@ -57,7 +61,7 @@ static int	fill_list(char const *s, char c, char **list)
 
 char	**ft_split(const char *s, char c)
 {
-	char	**list;
+	char **list;
 
 	if (!s)
 		return (NULL);

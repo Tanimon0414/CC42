@@ -18,8 +18,8 @@ Example:
 
 $> ./epur_str "See? It's easy to print the same thing" | cat -e
 See? It's easy to print the same thing$
-$> ./epur_str " this        time it      will     be    more complex  . " | cat -e
-this time it will be more complex .$
+$> ./epur_str " this        time it      will     be    more complex  . " | cat
+-e this time it will be more complex .$
 $> ./epur_str "No S*** Sherlock..." "nAw S*** ShErLaWQ..." | cat -e
 $
 $> ./epur_str "" | cat -e
@@ -29,31 +29,28 @@ $>
 
 #include <unistd.h>
 
-int main (int argc, char **argv)
-{
-	int i; 
-	int aux = 0; 
 
-	if (argc == 2)
-	{	
-		i = 0; 
-		while (argv[1][i] == ' ' || argv[1][i] == '	')
-			i++;
-		
-		while (argv[1][i])
-		{	
-			if (argv[1][i] == ' ' || argv[1][i] == '	')
-				aux = 1;
-			if (!(argv[1][i] == ' ' || argv[1][i] == '	'))	
-			{
-				if (aux)
-					write(1, " ", 1);
-				aux = 0; 
-				write(1, &argv[1][i], 1);
-			}
-			i++;
-		}
-	}
-	write(1, "\n", 1); 
-	return 0; 
+int	main(int argc, char **argv) {
+  int i;
+  int aux = 0;
+
+  if (argc == 2) {
+    i = 0;
+    while (argv[1][i] == ' ' || argv[1][i] == '	')
+      i++;
+
+    while (argv[1][i]) {
+      if (argv[1][i] == ' ' || argv[1][i] == '	')
+        aux = 1;
+      if (!(argv[1][i] == ' ' || argv[1][i] == '	')) {
+        if (aux)
+          write(1, " ", 1);
+        aux = 0;
+        write(1, &argv[1][i], 1);
+      }
+      i++;
+    }
+  }
+  write(1, "\n", 1);
+  return (0);
 }

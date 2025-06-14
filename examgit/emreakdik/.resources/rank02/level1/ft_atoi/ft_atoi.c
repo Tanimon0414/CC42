@@ -1,10 +1,11 @@
 #include <stdio.h>
 
-int     ft_atoi(const char *str)
+
+int	ft_atoi(const char *str)
 {
-	int	nbr;
+	int nbr;
 	int sig;
-	int	i;
+	int i;
 
 	nbr = 0;
 	sig = 1;

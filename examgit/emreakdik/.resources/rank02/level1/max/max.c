@@ -1,4 +1,4 @@
-int	max(int* tab, unsigned int len)
+int	max(int *tab, unsigned int len)
 {
 	if (len == 0)
 		return (0);

@@ -12,22 +12,23 @@ lines, or by the start/end of the string.
 
 Your function must be declared as follows:
 
-char    **ft_split(char *str);
+char	**ft_split(char *str);
 */
 
 #include <stdlib.h>
 
-char		**ft_split(char *str)
+
+char	**ft_split(char *str)
 {
-    int     i = 0;
-    int     j;
-    int     k = 0; 
-	char	**split;
+	int i = 0;
+	int j;
+	int k = 0;
+	char **split;
 
 	if (!(split = (char **)malloc(sizeof(char *) * 256)))
 		return (NULL);
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-        i++; 
+		i++;
 
 	while (str[i])
 	{
@@ -38,36 +39,36 @@ char		**ft_split(char *str)
 		while (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i])
 			split[k][j++] = str[i++];
 
-        while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-            i++;
+		while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+			i++;
 		split[k][j] = '\0';
-		k ++;
+		k++;
 	}
 	split[k] = NULL;
 	return (split);
 }
 /*
-int main() {
-    char str[] = "   Esto es  un    ejemplo   de   split. ";
-    char **result;
-    int i;
+int	main(void) {
+	char str[] = "   Esto es  un    ejemplo   de   split. ";
+	char **result;
+	int i;
 
-    result = ft_split(str);
+	result = ft_split(str);
 
-    if (!result) {
-        fprintf(stderr, "Error al dividir la cadena.\n");
-        return (1);
-    }
+	if (!result) {
+		fprintf(stderr, "Error al dividir la cadena.\n");
+		return (1);
+	}
 
-    i = 0;
-    while (result[i]) {
-        printf("Palabra %d: '%s'\n", i, result[i]);
-        free(result[i]); // Libera cada palabra
-        i++;
-    }
+	i = 0;
+	while (result[i]) {
+		printf("Palabra %d: '%s'\n", i, result[i]);
+		free(result[i]); // Libera cada palabra
+		i++;
+	}
 
-    free(result); // Libera el array de punteros
+	free(result); // Libera el array de punteros
 
-    return (0);
+	return (0);
 }
 */

@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+        +:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+
+        +#+        */
+/*                                                +#+#+#+#+#+
+        +#+           */
 /*   Created: 2022/03/09 11:05:59 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/09 11:06:18 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,8 +15,8 @@
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+
+void	ft_putendl_fd(char *s, int fd) {
+  ft_putstr_fd(s, fd);
+  ft_putchar_fd('\n', fd);
 }

@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/03/09 09:28:35 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/09 11:36:24 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,16 +15,15 @@
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	size_t	i;
 
-	if (s == NULL)
-		return ;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		ft_putchar_fd(s[i], fd);
-		i ++;
-	}
+void	ft_putstr_fd(char *s, int fd) {
+  size_t i;
+
+  if (s == NULL)
+    return ;
+  i = 0;
+  while (s[i] != '\0') {
+    ft_putchar_fd(s[i], fd);
+    i++;
+  }
 }

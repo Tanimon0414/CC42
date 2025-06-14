@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: keisuke <keisuke.130@icloud.com>           +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/03/09 10:02:55 by keisuke           #+#    #+#             */
 /*   Updated: 2022/03/09 10:03:38 by keisuke          ###   ########.fr       */
 /*                                                                            */
@@ -12,15 +15,14 @@
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
-{
-	int	num;
 
-	num = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		num ++;
-	}
-	return (num);
+int	ft_lstsize(t_list *lst) {
+  int num;
+
+  num = 0;
+  while (lst != NULL) {
+    lst = lst->next;
+    num++;
+  }
+  return (num);
 }

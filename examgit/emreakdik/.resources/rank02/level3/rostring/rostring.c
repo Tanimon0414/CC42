@@ -1,14 +1,15 @@
 
 #include <unistd.h>
 
-int		skip_whitespace(char *str, int i)
+
+int	skip_whitespace(char *str, int i)
 {
 	while (str[i] == ' ' || str[i] == '\t')
 		++i;
 	return (i);
 }
 
-int		ft_wordlen(char *str)
+int	ft_wordlen(char *str)
 {
 	int i = 0;
 
@@ -17,7 +18,7 @@ int		ft_wordlen(char *str)
 	return (i);
 }
 
-int		print_word(char *str, int i, int *is_first)
+int	print_word(char *str, int i, int *is_first)
 {
 	int word_len;
 
@@ -30,7 +31,7 @@ int		print_word(char *str, int i, int *is_first)
 	return (i + word_len);
 }
 
-int		epur_str(char *str)
+int	epur_str(char *str)
 {
 	int i = 0;
 	int is_first = 1;
@@ -44,7 +45,7 @@ int		epur_str(char *str)
 	return (is_first);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc >= 2)
 	{

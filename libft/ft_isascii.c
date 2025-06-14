@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+        +:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+
+        +#+        */
+/*                                                +#+#+#+#+#+
+        +#+           */
 /*   Created: 2025/04/25 12:48:21 by atanimot          #+#    #+#             */
 /*   Updated: 2025/05/08 20:41:58 by atanimot         ###   ########.fr       */
 /*                                                                            */
@@ -12,7 +15,5 @@
 
 #include "libft.h"
 
-int	ft_isascii(int c)
-{
-	return (c >= 0 && c <= 127);
-}
+
+int	ft_isascii(int c) { return (c >= 0 && c <= 127); }
