@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stacks.c                                      :+:      :+:    :+:   */
+/*   12_sort_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 20:22:01 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/14 15:06:27 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:02:20 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ int	search_min(t_stack *a)
 	best_cost = INT_MAX;
 	while (i < a->size)
 	{
-		if (cur->command.all <= i + 2)
-			return (i);
 		if (cur->command.all < best_cost)
 		{
 			best_cost = cur->command.all;
