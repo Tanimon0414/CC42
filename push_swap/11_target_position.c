@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 09:04:05 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/14 15:47:29 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:54:10 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	find_best_fit_in_a(t_stack *a, int idx)
 	return (target_pos);
 }
 
-static int	find_max_pos(t_stack *stack)
+int	find_max_pos(t_stack *stack)
 {
 	t_node	*cur;
 	int		i;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   99_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 18:08:39 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/08 13:39:44 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/15 10:26:53 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,17 @@ void	clear_stack(t_stack **stack_ptr)
 
 	if (stack_ptr == NULL || *stack_ptr == NULL)
 		return ;
-	if ((*stack_ptr)->top == NULL)
+	if ((*stack_ptr)->top != NULL)
 	{
-		free(*stack_ptr);
-		*stack_ptr = NULL;
-		return ;
-	}
-	current = (*stack_ptr)->top;
-	i = 0;
-	while (i < (*stack_ptr)->size)
-	{
-		next_node = current->next;
-		free(current);
-		current = next_node;
-		i++;
+		current = (*stack_ptr)->top;
+		i = 0;
+		while (i < (*stack_ptr)->size)
+		{
+			next_node = current->next;
+			free(current);
+			current = next_node;
+			i++;
+		}
 	}
 	free(*stack_ptr);
 	*stack_ptr = NULL;

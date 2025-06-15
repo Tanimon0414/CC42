@@ -6,24 +6,25 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 00:06:41 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/14 17:39:48 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:57:13 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	calc_cost_for_node_toa(t_node *cur, t_stack *a, t_stack *b, int pos)
+static t_node	*get_node_at_pos(t_stack *stack, int pos)
 {
-	int	cost_a;
-	int	cost_b;
-	int	pos_a;
-	int	common;
+	t_node	*cur;
+	int		i;
 
-	cost_b = rotation_cost(b->size, pos);
-	pos_a = target_pos_in_a(a, cur->index);
-	cost_a = rotation_cost(a->size, pos_a);
-	common = save_cost(cost_a, cost_b, cur);
-	set_commands(cost_a, cost_b, common, cur);
+	cur = stack->top;
+	i = 0;
+	while (i < pos)
+	{
+		cur = cur->next;
+		i++;
+	}
+	return (cur);
 }
 
 static void	calc_cost_for_node_tob(t_node *cur, t_stack *a, t_stack *b, int pos)
@@ -42,17 +43,20 @@ static void	calc_cost_for_node_tob(t_node *cur, t_stack *a, t_stack *b, int pos)
 
 void	count_commands_toa(t_stack *a, t_stack *b)
 {
-	t_node	*cur;
-	int		i;
+	t_node	*target_node;
+	int		pos_in_b;
+	int		cost_a;
+	int		cost_b;
+	int		common;
 
-	cur = b->top;
-	i = 0;
-	while (i < b->size)
-	{
-		calc_cost_for_node_toa(cur, a, b, i);
-		cur = cur->next;
-		i++;
-	}
+	if (b->size == 0)
+		return ;
+	pos_in_b = find_max_pos(b);
+	target_node = get_node_at_pos(b, pos_in_b);
+	cost_b = rotation_cost(b->size, pos_in_b);
+	cost_a = rotation_cost(a->size, target_pos_in_a(a, target_node->index));
+	common = save_cost(cost_a, cost_b, target_node);
+	set_commands(cost_a, cost_b, common, target_node);
 }
 
 void	count_commands_tob(t_stack *a, t_stack *b)

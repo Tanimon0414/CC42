@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:45:43 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/14 17:45:41 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:57:41 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	sort_stacks(t_stack *a, t_stack *b)
 	{
 		init_commands(b);
 		count_commands_toa(a, b);
-		move_idx = search_min(b);
+		move_idx = find_max_pos(b);
 		move_node_toa(move_idx, b, a);
 	}
 	align_min_on_top(a);

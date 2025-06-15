@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:52:24 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/14 17:40:58 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:54:17 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void				count_commands_tob(t_stack *a, t_stack *b);
 /* 11_target_position.c */
 int					target_pos_in_a(t_stack *a, int idx);
 int					target_pos_in_b(t_stack *b, int idx);
+int					find_max_pos(t_stack *stack);
 
 /* 12_sort_utils.c */
 void				align_min_on_top(t_stack *a);
