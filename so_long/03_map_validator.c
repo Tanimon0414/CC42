@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_varidator.c                                    :+:      :+:    :+:   */
+/*   03_map_validator.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 18:49:20 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/18 15:41:12 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:35:23 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ void	check_map_components(t_map *map)
 	map->e_count = 0;
 	count_and_validate_chars(map);
 	if (map->p_count != 1 || map->e_count != 1 || map->c_count < 1)
-		exit_with_error("Error: Invalid number of players, exits, "
-						"or collectibles.");
+		exit_with_error("Error: Invalid number of players,etc");
 }
 
 /*

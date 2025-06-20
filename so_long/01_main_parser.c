@@ -1,17 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_parser.c                                      :+:      :+:    :+:   */
+/*   02_main_parser.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 18:46:27 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/18 15:40:54 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/20 13:59:35 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "libft.h"
 #include "so_long.h"
 
 /*
@@ -22,35 +20,54 @@ static void	check_arguments(int argc, char **argv)
 	int	len;
 
 	if (argc != 2)
-		exit_with_error("Error: Invalid number of arguments.\nUsage: ./so_long <map.ber>");
+		exit_with_error("Error: Invalid number of arguments.\n");
 	len = ft_strlen(argv[1]);
 	if (len < 4 || ft_strncmp(argv[1] + len - 4, ".ber", 4) != 0)
 		exit_with_error("Error: Map file must have a .ber extension.");
 }
 
 /*
- * 2. マップファイルを読み込み、char**の2次元配列に格納する
- * (get_next_lineとlibftのft_split, ft_strjoinを想定)
+ * ヘルパー関数: ファイルディスクリプタから全ての行を読み込み、
+ * 一つの結合された文字列として返す。
+ */
+static char	*read_file_content(int fd)
+{
+	char	*line;
+	char	*full_str;
+	char	*temp;
+
+	full_str = ft_strdup("");
+	if (!full_str)
+		exit_with_error("Error: Memory allocation failed.");
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		temp = ft_strjoin(full_str, line);
+		free(full_str);
+		free(line);
+		if (!temp)
+			exit_with_error("Error: ft_strjoin failed.");
+		full_str = temp;
+	}
+	return (full_str);
+}
+
+/*
+ * 2. マップファイルを読み込み、char**の2次元配列に格納する。
+ * 25行以内に収まるようにリファクタリング済み。
  */
 static char	**read_map_file(char *filename)
 {
 	int		fd;
-	char	*line;
 	char	*full_map_str;
 	char	**map_grid;
-	char	*temp;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		exit_with_error("Error: Could not open map file.");
-	full_map_str = ft_strdup("");
-	while ((line = get_next_line(fd)))
-	{
-		temp = ft_strjoin(full_map_str, line);
-		free(full_map_str);
-		free(line);
-		full_map_str = temp;
-	}
+	full_map_str = read_file_content(fd);
 	close(fd);
 	map_grid = ft_split(full_map_str, '\n');
 	free(full_map_str);

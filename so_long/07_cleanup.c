@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   07_cleanup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 17:01:16 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/18 17:01:26 by atanimot         ###   ########.fr       */
+/*   Created: 2025/06/20 11:59:45 by atanimot          #+#    #+#             */
+/*   Updated: 2025/06/20 12:03:39 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	destroy_images(t_game *game)
 {
+	if (!game->mlx)
+		return ;
 	if (game->img.wall)
 		mlx_destroy_image(game->mlx, game->img.wall);
 	if (game->img.floor)
@@ -35,6 +37,7 @@ int	close_game(t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
 	{
+		// mlx_loop_end(game->mlx); // mlx_loopを終了させる場合
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
@@ -51,9 +54,9 @@ void	free_grid(char **grid)
 {
 	int	i;
 
-	i = 0;
 	if (!grid)
 		return ;
+	i = 0;
 	while (grid[i])
 	{
 		free(grid[i]);

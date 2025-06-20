@@ -6,13 +6,14 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:01:58 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/18 16:56:04 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/06/20 14:05:12 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
 # include <fcntl.h>
@@ -33,6 +34,14 @@
 # define EVENT_DESTROY 17
 
 /* --- 構造体 --- */
+
+// BFSでの座標管理用にt_point構造体を定義
+typedef struct s_point
+{
+	int		x;
+	int		y;
+}			t_point;
+
 typedef struct s_map
 {
 	char	**grid;
@@ -63,6 +72,28 @@ typedef struct s_game
 	int		move_count;
 }			t_game;
 
+typedef struct s_queue
+{
+	t_point	*points;
+	int		front;
+	int		rear;
+	int		capacity;
+}			t_queue;
+
+typedef struct s_bfs
+{
+	t_queue	*queue;
+	char	**visited;
+	int		found_c;
+	int		found_e;
+}			t_bfs;
+
+typedef struct s_directions
+{
+	int		dx[4];
+	int		dy[4];
+}			t_directions;
+
 /* --- 関数プロトタイプ --- */
 
 /* init.c */
@@ -86,6 +117,11 @@ t_map		*parse_map(int argc, char **argv);
 void		check_map_components(t_map *map);
 void		check_walls(t_map *map);
 void		check_path(t_map *map);
+
+/* queue_utils.c */
+t_queue		*create_queue(int capacity);
+void		enqueue(t_queue *q, int x, int y);
+t_point		dequeue(t_queue *q);
 
 /* error.c */
 void		exit_with_error(char *message);
