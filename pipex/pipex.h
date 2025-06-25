@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_main.c                                          :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/15 17:00:57 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/25 15:21:57 by atanimot         ###   ########.fr       */
+/*   Created: 2025/06/24 18:58:33 by atanimot          #+#    #+#             */
+/*   Updated: 2025/06/25 18:49:28 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef PIPEX_H
+# define PIPEX_H
 
-int	main(int argc, char **argv)
+# include "get_next_line/get_next_line.h"
+# include "libft/ft_printf.h"
+# include "libft/libft.h"
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/wait.h>
+# include <unistd.h>
+
+typedef struct s_all
 {
-	t_game	game;
-	t_map	*map;
+	char	**path;
+	char	*abpath;
+	int		input_fd;
+	int		output_fd;
+	int		pipefd[2];
+	pid_t	pid;
+	int		cmd_num;
+}			t_all;
 
-	map = parse_map(argc, argv);
-	init_game(&game, map);
-	start_mlx(&game);
-	mlx_loop(game.mlx);
-	return (0);
-}
+#endif

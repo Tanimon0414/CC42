@@ -2,7 +2,9 @@
 	"files.associations": {
 		"stdlib.h": "c",
 		"stddef.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"get_next_line.h": "c",
+		"so_long.h": "c"
 	},
 	"cmake.ignoreCMakeListsMissing": true
 }
