@@ -1,0 +1,52 @@
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 26:
+[0m[1m./pipex "infiles/basic.txt" "cat -e" "cat -e" "cat -e" "outfiles/outfile" 
+< infiles/basic.txt cat -e | cat -e | cat -e > outfiles/outfile_tester
+
+[0m[31;1mOutput: [0m
+[31;1moutfiles/outfile:                                               [32;1moutfiles/outfile_tester:[0m
+This is random text echoed into existing outfiles before      |	 Good draw knew bred ham busy his hour. Ask agreed answer rat
+applying pipex. This allows to verify whether your program    |	$$$
+and the original replace or append existing text	      |	Did shy say mention enabled through elderly improve. As at so
+							      >	$$$
+							      >	Finished her are its honoured drawings nor. Pretty see mutual
+
+[31;1mExit status:[0m
+Your exit status: 1
+Orig exit status: 0
+
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 27:
+[0m[1m./pipex "infiles/basic.txt" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "cat -e" "outfiles/outfile" 
+< infiles/basic.txt cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e > outfiles/outfile_tester
+
+[0m[31;1mOutput: [0m
+[31;1moutfiles/outfile:                                               [32;1moutfiles/outfile_tester:[0m
+This is random text echoed into existing outfiles before      |	 Good draw knew bred ham busy his hour. Ask agreed answer rat
+applying pipex. This allows to verify whether your program    |	$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+and the original replace or append existing text	      |	Did shy say mention enabled through elderly improve. As at so
+							      >	$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+							      >	Finished her are its honoured drawings nor. Pretty see mutual
+
+[31;1mExit status:[0m
+Your exit status: 1
+Orig exit status: 0
+
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 28:
+[0m[1m./pipex "here_doc" "EOF" "cat -e" "cat -e" "outfiles/outfile" 
+cat -e << EOF | cat -e >> outfiles/outfile_tester
+
+[0m[31;1mOutput: [0m
+[31;1moutfiles/outfile:                                               [32;1moutfiles/outfile_tester:[0m
+This is random text echoed into existing outfiles before 	This is random text echoed into existing outfiles before 
+applying pipex. This allows to verify whether your program	applying pipex. This allows to verify whether your program
+and the original replace or append existing text		and the original replace or append existing text
+							      >	Hello$$
+							      >	Hello$$
+							      >	Hello$$
+
+[31;1mExit status:[0m
+Your exit status: 1
+Orig exit status: 0
+

@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:58:33 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/29 18:06:11 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/02 14:42:56 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 
 typedef struct s_all
 {
-	char	**path;
-	char	*abpath;
 	int		input_fd;
 	int		output_fd;
 	int		pipefd[2];

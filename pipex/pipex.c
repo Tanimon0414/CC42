@@ -5,39 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 18:58:18 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/29 18:08:30 by atanimot         ###   ########.fr       */
+/*   Created: 2025/07/02 14:43:48 by atanimot          #+#    #+#             */
+/*   Updated: 2025/07/02 19:14:40 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static void	cmd_2(t_all *all, char **argv, char **envp)
+static void	execute_command(char *cmd_str, t_all *all, char **envp)
 {
-	all->output_fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (all->output_fd < 0)
-		exit_with_error("open output file", all);
-	close(all->pipefd[1]);
-	dup2(all->pipefd[0], STDIN_FILENO);
-	dup2(all->output_fd, STDOUT_FILENO);
-	close(all->pipefd[0]);
-	close(all->output_fd);
-	all->path = ft_split(argv[3], ' ');
-	if (!all->path)
+	char	**path;
+	char	*abpath;
+
+	path = ft_split(cmd_str, ' ');
+	if (!path)
 		exit_with_error("ft_split", all);
-	all->abpath = find_command_path(all->path[0], envp);
-	if (all->abpath == NULL)
+	abpath = find_command_path(path[0], envp);
+	if (abpath == NULL)
 	{
 		perror("command not found");
-		free_char_array(all->path);
+		free_char_array(path);
+		free(all);
 		exit(127);
 	}
-	execve(all->abpath, all->path, envp);
-	perror("execve in cmd2");
-	free_char_array(all->path);
-	free(all->abpath);
+	execve(abpath, path, envp);
+	perror("execve");
+	free_char_array(path);
+	free(abpath);
 	free(all);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 static void	cmd_1(t_all *all, char **argv, char **envp)
@@ -50,22 +46,36 @@ static void	cmd_1(t_all *all, char **argv, char **envp)
 	close(all->input_fd);
 	dup2(all->pipefd[1], STDOUT_FILENO);
 	close(all->pipefd[1]);
-	all->path = ft_split(argv[2], ' ');
-	if (!all->path)
-		exit_with_error("ft_split", all);
-	all->abpath = find_command_path(all->path[0], envp);
-	if (all->abpath == NULL)
-	{
-		perror("command not found");
-		free_char_array(all->path);
-		exit(127);
-	}
-	execve(all->abpath, all->path, envp);
-	perror("execve in cmd1");
-	free_char_array(all->path);
-	free(all->abpath);
+	execute_command(argv[2], all, envp);
+}
+
+static void	cmd_2(t_all *all, char **argv, char **envp)
+{
+	all->output_fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (all->output_fd < 0)
+		exit_with_error("open output file", all);
+	close(all->pipefd[1]);
+	dup2(all->pipefd[0], STDIN_FILENO);
+	close(all->pipefd[0]);
+	dup2(all->output_fd, STDOUT_FILENO);
+	close(all->output_fd);
+	execute_command(argv[3], all, envp);
+}
+
+static int	parent_process(t_all *all)
+{
+	int	exit_status;
+
+	close(all->pipefd[0]);
+	close(all->pipefd[1]);
+	waitpid(all->pid1, &(all->status1), 0);
+	waitpid(all->pid2, &(all->status2), 0);
+	if ((all->status2 & 0xFF) == 0)
+		exit_status = (all->status2 >> 8) & 0xFF;
+	else
+		exit_status = 1;
 	free(all);
-	exit(1);
+	return (exit_status);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -82,17 +92,14 @@ int	main(int argc, char **argv, char **envp)
 	if (pipe(all->pipefd) == -1)
 		exit_with_error("pipe", all);
 	all->pid1 = fork();
+	if (all->pid1 < 0)
+		exit_with_error("fork", all);
 	if (all->pid1 == 0)
 		cmd_1(all, argv, envp);
 	all->pid2 = fork();
+	if (all->pid2 < 0)
+		exit_with_error("fork", all);
 	if (all->pid2 == 0)
 		cmd_2(all, argv, envp);
-	close(all->pipefd[0]);
-	close(all->pipefd[1]);
-	waitpid(all->pid1, &(all->status1), 0);
-	waitpid(all->pid2, &(all->status2), 0);
-	free(all);
-	if (WIFEXITED(all->status2))
-		return (WEXITSTATUS(all->status2));
-	return (1);
+	return (parent_process(all));
 }

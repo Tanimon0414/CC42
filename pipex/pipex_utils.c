@@ -6,14 +6,12 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 08:18:52 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/29 18:36:19 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:01:12 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// envpをループして"PATH="で始まる行を探す
-// 例: "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 char	*find_path_env(char **envp)
 {
 	int	i;
