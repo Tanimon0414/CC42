@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 14:43:48 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/02 19:14:40 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/05 16:01:42 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int	main(int argc, char **argv, char **envp)
 		exit_with_error("malloc", NULL);
 	all->input_fd = -1;
 	all->output_fd = -1;
+	all->pipefd[0] = -1;
+	all->pipefd[1] = -1;
 	if (pipe(all->pipefd) == -1)
 		exit_with_error("pipe", all);
 	all->pid1 = fork();

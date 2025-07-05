@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 08:18:52 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/02 17:01:12 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/05 16:02:05 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	exit_with_error(char *message, t_all *all)
 			close(all->input_fd);
 		if (all->output_fd > 2)
 			close(all->output_fd);
+		if (all->pipefd[0] > 2)
+			close(all->pipefd[0]);
+		if (all->pipefd[1] > 2)
+			close(all->pipefd[1]);
 		free(all);
 	}
 	exit(1);
