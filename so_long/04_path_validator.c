@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 13:51:12 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/20 14:09:58 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/06 21:31:04 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ static t_directions	*get_directions(void)
 	return (&dirs);
 }
 
-/*
- * ヘルパー関数: visitedマップを作成し初期化する。
- * map構造体ではなく、heightとwidthを直接引数として受け取る。
- */
 static char	**create_and_init_visited_map(int height, int width)
 {
 	char	**visited;
@@ -55,10 +51,6 @@ static char	**create_and_init_visited_map(int height, int width)
 	return (visited);
 }
 
-/*
- * ヘルパー関数: BFSの初期設定を行う。
- * create_and_init_visited_mapを呼び出す際に、map->heightとmap->widthを渡す。
- */
 static void	init_bfs_data(t_bfs *bfs, t_map *map)
 {
 	bfs->found_c = 0;

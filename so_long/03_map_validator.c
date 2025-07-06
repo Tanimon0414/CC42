@@ -6,15 +6,12 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 18:49:20 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/20 16:35:23 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:57:26 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*
- * 新しいヘルパー関数：1文字を処理し、種類に応じてカウンターを増やす
- */
 static void	process_char(t_map *map, int y, int x)
 {
 	char	c;
@@ -34,9 +31,6 @@ static void	process_char(t_map *map, int y, int x)
 		exit_with_error("Error: Invalid character in map.");
 }
 
-/*
- * ヘルパー関数：マップを走査し、文字の処理をprocess_charに委譲する
- */
 static void	count_and_validate_chars(t_map *map)
 {
 	int	y;
@@ -53,10 +47,6 @@ static void	count_and_validate_chars(t_map *map)
 	}
 }
 
-/*
- * 4&5&7. マップが長方形であること、構成文字が正しいこと、
- * P, E, Cの数がルール通りであることを検証する
- */
 void	check_map_components(t_map *map)
 {
 	map->height = 0;
@@ -73,9 +63,6 @@ void	check_map_components(t_map *map)
 		exit_with_error("Error: Invalid number of players,etc");
 }
 
-/*
- * 6. マップが壁で囲まれているか検証する
- */
 void	check_walls(t_map *map)
 {
 	int	i;

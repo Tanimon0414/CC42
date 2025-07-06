@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:01:58 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/20 14:05:12 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:03:50 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-/* --- 定数 --- */
 # define TILE_SIZE 64
 
 # define KEY_W 119
@@ -33,9 +32,6 @@
 # define EVENT_KEY_PRESS 2
 # define EVENT_DESTROY 17
 
-/* --- 構造体 --- */
-
-// BFSでの座標管理用にt_point構造体を定義
 typedef struct s_point
 {
 	int		x;
@@ -94,36 +90,26 @@ typedef struct s_directions
 	int		dy[4];
 }			t_directions;
 
-/* --- 関数プロトタイプ --- */
-
-/* init.c */
 void		init_game(t_game *game, t_map *map);
 void		start_mlx(t_game *game);
 
-/* render.c */
 int			render_game(t_game *game);
 
-/* game.c */
 int			handle_keypress(int keycode, t_game *game);
 
-/* cleanup.c */
 int			close_game(t_game *game);
 void		free_grid(char **grid);
 
-/* parser.c */
 t_map		*parse_map(int argc, char **argv);
 
-/* validator.c */
 void		check_map_components(t_map *map);
 void		check_walls(t_map *map);
 void		check_path(t_map *map);
 
-/* queue_utils.c */
 t_queue		*create_queue(int capacity);
 void		enqueue(t_queue *q, int x, int y);
 t_point		dequeue(t_queue *q);
 
-/* error.c */
 void		exit_with_error(char *message);
 
 #endif
