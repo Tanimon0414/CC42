@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 18:46:27 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/06 15:47:57 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/20 19:23:25 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ static char	**read_map_file(char *filename)
 	close(fd);
 	map_grid = ft_split(full_map_str, '\n');
 	free(full_map_str);
-	if (!map_grid || !map_grid[0])
-		exit_with_error("Error: Map is empty or failed to read.");
 	return (map_grid);
 }
 
@@ -77,10 +75,15 @@ t_map	*parse_map(int argc, char **argv)
 	t_map	*map_data;
 
 	check_arguments(argc, argv);
-	map_data = (t_map *)malloc(sizeof(t_map));
+	map_data = (t_map *)ft_calloc(1, sizeof(t_map));
 	if (!map_data)
 		exit_with_error("Error: Memory allocation failed.");
 	map_data->grid = read_map_file(argv[1]);
+	if (!map_data->grid || !map_data->grid[0])
+	{
+		free_map(map_data);
+		exit_with_error("Error: Map is empty or failed to read.");
+	}
 	validate_map(map_data);
 	return (map_data);
 }

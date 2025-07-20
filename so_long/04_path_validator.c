@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 13:51:12 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/19 15:19:36 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:41:55 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,8 @@ void	check_path(t_map *map)
 	free(bfs.queue);
 	free_grid(bfs.visited);
 	if (!bfs.found_e || bfs.found_c != map->c_count)
+	{
+		free_map(map);
 		exit_with_error("Error: No valid path found.");
+	}
 }

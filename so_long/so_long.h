@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:01:58 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/20 14:36:04 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:38:32 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ void		enqueue(t_queue *q, int x, int y);
 t_point		dequeue(t_queue *q);
 
 void		exit_with_error(char *message);
+void		free_map(t_map *map);
 
 #endif

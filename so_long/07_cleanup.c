@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:59:45 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/20 14:45:20 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:38:54 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,13 @@ void	free_grid(char **grid)
 		i++;
 	}
 	free(grid);
+}
+
+void	free_map(t_map *map)
+{
+	if (!map)
+		return ;
+	if (map->grid)
+		free_grid(map->grid);
+	free(map);
 }
