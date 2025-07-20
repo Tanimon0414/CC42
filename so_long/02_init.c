@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_init.c                                          :+:      :+:    :+:   */
+/*   02_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:57:09 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/20 12:03:09 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/20 14:36:30 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_game(t_game *game, t_map *map)
 {
 	game->map = map;
 	game->move_count = 0;
+	game->tile_under_player = '0';
 	game->mlx = NULL;
 	game->win = NULL;
 }

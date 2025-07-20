@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:59:45 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/20 12:03:39 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/20 14:45:20 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	close_game(t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
 	{
-		// mlx_loop_end(game->mlx); // mlx_loopを終了させる場合
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}

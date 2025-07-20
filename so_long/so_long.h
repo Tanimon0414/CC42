@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:01:58 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/06 16:03:50 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/20 14:36:04 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_game
 	t_map	*map;
 	t_img	img;
 	int		move_count;
+	char	tile_under_player;
 }			t_game;
 
 typedef struct s_queue

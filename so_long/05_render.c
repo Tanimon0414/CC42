@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:58:04 by atanimot          #+#    #+#             */
-/*   Updated: 2025/06/20 12:03:34 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/20 16:29:30 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	render_game(t_game *game)
 		x = 0;
 		while (x < game->map->width)
 		{
-			/* 床を先に描画してからオブジェクトを描画すると透過が綺麗にいく */
 			mlx_put_image_to_window(game->mlx, game->win, game->img.floor, x
 				* TILE_SIZE, y * TILE_SIZE);
 			draw_tile(game, y, x);

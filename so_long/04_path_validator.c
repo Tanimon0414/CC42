@@ -6,17 +6,12 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 13:51:12 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/06 21:31:04 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/19 15:19:36 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*
- * ヘルパー(ゲッター)関数: 静的な構造体のポインタを返す。
- * static変数の初期化は一度しか行われないため、宣言と代入が許容される。
- * これによりグローバル変数を使わずに定数配列を扱うことができる。
- */
 static t_directions	*get_directions(void)
 {
 	static t_directions	dirs = {{0, 0, 1, -1}, {1, -1, 0, 0}};
