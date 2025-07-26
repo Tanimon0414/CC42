@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 18:49:20 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/20 18:41:36 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:38:33 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	count_and_validate_chars(t_map *map)
 		if ((int)ft_strlen(map->grid[y]) != map->width)
 		{
 			free_map(map);
-			exit_with_error("Error: Map is empty.");
+			exit_with_error("Error: The map must be rectangular.");
 		}
 		x = -1;
 		while (++x < map->width)
@@ -53,7 +53,7 @@ static void	count_and_validate_chars(t_map *map)
 	}
 }
 
-void	check_map_components(t_map *map)
+static void	check_map_components(t_map *map)
 {
 	map->height = 0;
 	while (map->grid[map->height])
@@ -61,7 +61,7 @@ void	check_map_components(t_map *map)
 	if (map->height == 0)
 	{
 		free_map(map);
-		exit_with_error("Error: Map is not enclosed by walls.");
+		exit_with_error("Error: Failed to read map grid.");
 	}
 	map->width = ft_strlen(map->grid[0]);
 	map->p_count = 0;
@@ -71,11 +71,11 @@ void	check_map_components(t_map *map)
 	if (map->p_count != 1 || map->e_count != 1 || map->c_count < 1)
 	{
 		free_map(map);
-		exit_with_error("Error: Map is not enclosed by walls.");
+		exit_with_error("Error: Map must contain 1 player, etc");
 	}
 }
 
-void	check_walls(t_map *map)
+static void	check_walls(t_map *map)
 {
 	int	i;
 
@@ -85,13 +85,20 @@ void	check_walls(t_map *map)
 		if (map->grid[0][i] != '1' || map->grid[map->height - 1][i] != '1')
 		{
 			free_map(map);
-			exit_with_error("Error: Invalid character in map.");
+			exit_with_error("Error: Map must be enclosed by walls.");
 		}
 	}
 	i = -1;
 	while (++i < map->height)
 	{
 		if (map->grid[i][0] != '1' || map->grid[i][map->width - 1] != '1')
-			exit_with_error("Error: Map is not enclosed by walls.");
+			exit_with_error("Error: Map must be enclosed by walls.");
 	}
+}
+
+void	validate_map(t_map *map)
+{
+	check_map_components(map);
+	check_walls(map);
+	check_path(map);
 }

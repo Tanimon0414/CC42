@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 18:46:27 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/20 19:23:25 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:50:26 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,23 @@ static char	*read_file_content(int fd)
 	return (full_str);
 }
 
+static void	validate_raw_map_str(char *full_map_str)
+{
+	size_t	len;
+
+	if (ft_strnstr(full_map_str, "\n\n", ft_strlen(full_map_str)))
+	{
+		free(full_map_str);
+		exit_with_error("Error: Map contains one or more empty lines.");
+	}
+	len = ft_strlen(full_map_str);
+	if (full_map_str[0] == '\n' || full_map_str[len - 1] == '\n')
+	{
+		free(full_map_str);
+		exit_with_error("Error: Map has leading or trailing empty lines.");
+	}
+}
+
 static char	**read_map_file(char *filename)
 {
 	int		fd;
@@ -58,27 +75,31 @@ static char	**read_map_file(char *filename)
 		exit_with_error("Error: Could not open map file.");
 	full_map_str = read_file_content(fd);
 	close(fd);
+	if (!*full_map_str)
+	{
+		free(full_map_str);
+		exit_with_error("Error: Map file is empty.");
+	}
+	validate_raw_map_str(full_map_str);
 	map_grid = ft_split(full_map_str, '\n');
 	free(full_map_str);
 	return (map_grid);
 }
 
-static void	validate_map(t_map *map)
-{
-	check_map_components(map);
-	check_walls(map);
-	check_path(map);
-}
-
 t_map	*parse_map(int argc, char **argv)
 {
 	t_map	*map_data;
+	char	**grid_tmp;
 
 	check_arguments(argc, argv);
+	grid_tmp = read_map_file(argv[1]);
 	map_data = (t_map *)ft_calloc(1, sizeof(t_map));
 	if (!map_data)
+	{
+		free_grid(grid_tmp);
 		exit_with_error("Error: Memory allocation failed.");
-	map_data->grid = read_map_file(argv[1]);
+	}
+	map_data->grid = grid_tmp;
 	if (!map_data->grid || !map_data->grid[0])
 	{
 		free_map(map_data);

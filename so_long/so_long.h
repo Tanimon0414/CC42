@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:01:58 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/20 18:38:32 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:28:33 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void		free_grid(char **grid);
 
 t_map		*parse_map(int argc, char **argv);
 
-void		check_map_components(t_map *map);
-void		check_walls(t_map *map);
+void		validate_map(t_map *map);
+
 void		check_path(t_map *map);
 
 t_queue		*create_queue(int capacity);
