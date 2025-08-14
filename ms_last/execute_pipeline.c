@@ -6,7 +6,7 @@
 /*   By: kkuramot <kkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 18:21:57 by kkuramot          #+#    #+#             */
-/*   Updated: 2025/07/29 14:09:22 by kkuramot         ###   ########.fr       */
+/*   Updated: 2025/08/02 14:58:39 by kkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,42 +77,6 @@ static void	execute_fork_pipeline(t_cmd *cmds, t_shell *shell)
 	wait_for_pipeline(last_pid, shell);
 	close(devnull);
 }
-
-// static void	wait_for_pipeline(pid_t last_pid, t_shell *shell)
-// {
-// 	int	status;
-
-// 	if (last_pid == -1)
-// 	{
-// 		shell->last_status = 1;
-// 		return ;
-// 	}
-// 	if (waitpid(last_pid, &status, 0) == -1)
-// 		perror("waitpid");
-// 	while (wait(NULL) > 0)
-// 		;
-// 	if (WIFEXITED(status))
-// 		shell->last_status = WEXITSTATUS(status);
-// 	else if (WIFSIGNALED(status))
-// 		shell->last_status = 128 + WTERMSIG(status);
-// }
-
-// static void	execute_fork_pipeline(t_cmd *cmds, t_shell *shell)
-// {
-// 	int		devnull;
-// 	pid_t	last_pid;
-
-// 	devnull = open("/dev/null", O_RDONLY);
-// 	if (devnull == -1)
-// 	{
-// 		perror("open /dev/null");
-// 		return ;
-// 	}
-// 	prepare_redir_errors(cmds, devnull);
-// 	last_pid = execute_pipeline_loop(cmds, shell, -1);
-// 	wait_for_pipeline(last_pid, shell);
-// 	close(devnull);
-// }
 
 static void	run_parent_builtin(t_cmd *cmd, t_shell *shell)
 {

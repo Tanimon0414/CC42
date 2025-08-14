@@ -6,7 +6,7 @@
 /*   By: kkuramot <kkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 18:22:48 by kkuramot          #+#    #+#             */
-/*   Updated: 2025/07/29 14:12:45 by kkuramot         ###   ########.fr       */
+/*   Updated: 2025/08/02 14:08:43 by kkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ static void	main_loop(t_shell *shell)
 	{
 		setup_signals_interactive(shell);
 		line = read_full_command(shell);
+		if (g_signal_status == 130)
+		{
+			shell->last_status = 130;
+			g_signal_status = 0;
+		}
 		if (!line)
 			continue ;
 		if (handle_pre_execution_checks(line, shell))

@@ -40,7 +40,8 @@ SRC += execute_cd.c \
        execute_pwd.c \
        execute_unset.c \
        export_utils.c \
-       get_cd_target.c
+       get_cd_target.c \
+       change_env.c
 
 # Libft / Utils
 SRC += check_something.c \

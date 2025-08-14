@@ -6,15 +6,18 @@
 /*   By: kkuramot <kkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 18:23:08 by kkuramot          #+#    #+#             */
-/*   Updated: 2025/07/29 14:06:36 by kkuramot         ###   ########.fr       */
+/*   Updated: 2025/08/02 14:09:52 by kkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+volatile sig_atomic_t	g_signal_status = 0;
+
 void	handle_sigint_interactive(int sig)
 {
 	(void)sig;
+	g_signal_status = 130;
 	write(STDOUT_FILENO, "\n", 1);
 	rl_on_new_line();
 	rl_replace_line("", 0);
@@ -23,7 +26,7 @@ void	handle_sigint_interactive(int sig)
 
 void	setup_signals_interactive(t_shell *shell)
 {
-	shell->last_status = 130;
+	(void)shell;
 	signal(SIGINT, handle_sigint_interactive);
 	signal(SIGQUIT, SIG_IGN);
 }

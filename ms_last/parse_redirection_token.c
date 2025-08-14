@@ -6,7 +6,7 @@
 /*   By: kkuramot <kkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 18:23:03 by kkuramot          #+#    #+#             */
-/*   Updated: 2025/07/29 14:06:46 by kkuramot         ###   ########.fr       */
+/*   Updated: 2025/08/02 14:10:39 by kkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,32 +67,32 @@ static void	handle_fd_redirection(const char *op, const char *path, t_cmd *cmd)
 	close(fd);
 }
 
-void	parse_redirection_token(t_token *op, t_token *file, t_cmd *cmd,
+int	parse_redirection_token(t_token *op, t_token *file, t_cmd *cmd,
 		t_shell *shell)
 {
 	char	*path;
 	int		fd;
 
 	if (cmd->has_redir_error || !op || !file || !file->value)
-		return ;
+		return (1);
 	path = get_expanded_path(file, op, shell);
 	if (!path)
-		return ;
+		return (1);
 	if (ft_isdigit(op->value[0]) && op->value[1] == '>')
 	{
 		handle_fd_redirection(op->value, path, cmd);
 		free(path);
-		return ;
+		return (1);
 	}
 	fd = open_redir_file(op->value, path, shell);
 	if (fd == -1)
 	{
 		if (ft_strcmp(op->value, "<<") == 0)
-			cmd->has_redir_error = 1;
-		else
-			handle_redir_error(path, cmd);
+			return (free(path), 0);
+		handle_redir_error(path, cmd);
 	}
 	else
 		assign_fd_to_cmd(fd, op->value, cmd);
 	free(path);
+	return (1);
 }

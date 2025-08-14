@@ -6,7 +6,7 @@
 /*   By: kkuramot <kkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 18:22:54 by kkuramot          #+#    #+#             */
-/*   Updated: 2025/07/27 18:22:55 by kkuramot         ###   ########.fr       */
+/*   Updated: 2025/08/02 14:11:04 by kkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	handle_redir_token(t_token **tokens_ptr, t_cmd *curr, t_shell *shell)
 	const char	*next_val;
 	t_token		*current_token;
 	t_token		*next_token;
+	int			result;
 
 	current_token = *tokens_ptr;
 	next_token = current_token + 1;
@@ -63,7 +64,9 @@ int	handle_redir_token(t_token **tokens_ptr, t_cmd *curr, t_shell *shell)
 		shell->last_status = 2;
 		return (0);
 	}
-	parse_redirection_token(current_token, next_token, curr, shell);
+	result = parse_redirection_token(current_token, next_token, curr, shell);
+	if (result == 0)
+		return (0);
 	*tokens_ptr = next_token;
 	return (1);
 }
