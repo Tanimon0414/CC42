@@ -29,37 +29,85 @@ int	cal_num(int len)
 	return (len * cal_num(len - 1));
 }
 
-char	*bubble_sort(char *str, int len)
+void	ft_strcpy(char *dest, char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return ;
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}
+
+void	sort_perm(char **all, int num)
 {
 	int		i;
 	int		j;
-	char	tmp;
+	char	*tmp;
 
 	i = 0;
-	while (i < len - 1)
+	while (i < num - 1)
 	{
 		j = 0;
-		while (j < len - i - 1)
+		while (j < num - i - 1)
 		{
-			if (str[j] > str[j + 1] && str[j + 1])
+			if (ft_strcmp(all[j], all[j + 1] > 0))
 			{
-				tmp = str[j + 1];
-				str[j + 1] = str[j];
-				str[j] = tmp;
+				tmp = all[j + 1];
+				all[j + 1] = all[j];
+				all[j] = tmp;
 			}
 			j++;
 		}
 		i++;
 	}
-	return (str);
+	return ;
 }
 
-void	sort_and_puts(char *ordered, int num, int len, int move_idx)
+void	put_perm(char **all, int num)
 {
-	int	count;
+	int	i;
 
-	count = cal_num(len - move_idx - 1, 1);
-	if (count == 1)
+	i = 0;
+	while (i < num)
+	{
+		puts(all[i]);
+		i++;
+	}
+	return ;
+}
+
+void	gen_all_perm(char **all, char *str, int *row, int current_index,
+		int len)
+{
+	char	tmp;
+	int		i;
+
+	if (current_index == len)
+	{
+		ft_strcpy(all[(*row)], str);
+		return ;
+	}
+	i = current_index;
+	while (i < len)
 	{
 	}
 }
@@ -68,9 +116,10 @@ int	main(int argc, char **argv)
 {
 	int		len;
 	int		num;
-	char	*ordered;
 	char	**all;
-	int		move_idx;
+	int		row;
+	int		current_index;
+	int		i;
 
 	if (argc != 2)
 		return (0);
@@ -79,16 +128,17 @@ int	main(int argc, char **argv)
 		return (0);
 	num = cal_num(len);
 	all = malloc(sizeof(char *) * num);
-	ordered = malloc(sizeof(char) * len + 1);
-	ordered = bubble_sort(argv[1], len);
-	printf("len = %d, num = %d, ordered = %s\n", len, num, ordered);
-	return (0);
-	move_idx = len - 1;
-	while (move_idx >= 0)
+	i = 0;
+	while (i < num)
 	{
-		sort_and_puts(ordered, num, len, move_idx);
-		move_idx--;
+		all[i] = malloc(sizeof(char) * (len + 1));
+		i++;
 	}
+	row = 0;
+	current_index = 0;
+	gen_all_perm(all, argv[1], &row, current_index, len);
+	sort_perm(all, num);
+	put_perm(all, num);
 	return (0);
 }
 

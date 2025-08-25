@@ -42,17 +42,15 @@ void	ft_strcpy(char *dest, char *s)
 	dest[i] = '\0';
 }
 
-// recursive function to generate all permutations and store them in the matrix
 void	generate_all_perms(int current_index, int size, char *s,
 		char **all_perms, int *perms_row_index)
 {
 	char	temp;
 
-	// base case: reaching end of the string
 	if (current_index == size)
 	{
 		ft_strcpy(all_perms[(*perms_row_index)], s);
-		(*perms_row_index)++; // Increment the index for the next permutation
+		(*perms_row_index)++;
 		return ;
 	}
 	/* Start from the given current index in the string:
@@ -71,7 +69,6 @@ void	generate_all_perms(int current_index, int size, char *s,
 		temp = s[i];
 		s[i] = s[current_index];
 		s[current_index] = temp;
-		// recursive call to move to the next index position
 		generate_all_perms(current_index + 1, size, s, all_perms,
 			perms_row_index);
 		// backtracking: swap the charaters again
@@ -145,11 +142,7 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	total_perms = ft_factorial(size);
-	// Allocate memory for an array of char pointers.
-	// Each pointer will point to a dynamically allocated string representing a permutation.
 	all_perms = malloc(sizeof(char *) * total_perms);
-	// Allocate memory for each individual permutation string.
-	// Each string needs 'size + 1' bytes (for characters + null terminator)
 	for (int i = 0; i < total_perms; i++)
 		all_perms[i] = calloc(size + 1, sizeof(char));
 	perms_row_index = 0;
