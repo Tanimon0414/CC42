@@ -5,9 +5,14 @@
 
 int	main(void)
 {
-	long long	n;
+	char	str1[4];
+	char	str2[4];
 
-	n = __LONG_LONG_MAX__;
-	printf("%lld\n", n);
+	printf("文字列を入力してEnterボタンを押してください\n");
+	scanf("ID:%s", str1);
+	printf("入力された文字列は：%s\n", str1);
+	printf("文字列を入力してEnterボタンを押してください\n");
+	scanf("%s", str2);
+	printf("入力された文字列は：%s\n", str2);
 	return (0);
 }
