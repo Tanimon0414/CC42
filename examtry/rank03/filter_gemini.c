@@ -7,19 +7,14 @@
 static int	my_strncmp(const char *s1, const char *s2, size_t n)
 {
 	if (n == 0)
-	{
 		return (0);
-	}
 	while (n-- > 0 && *s1 == *s2)
 	{
 		if (*s1 == '\0')
-		{
 			return (0);
-		}
 		s1++;
 		s2++;
 	}
-	// ループ終了後、nが-1になっているので+1して元のnの範囲の値に戻す
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
@@ -33,9 +28,7 @@ int	main(int argc, char *argv[])
 	char			*temp_buffer;
 
 	if (argc != 2 || argv[1][0] == '\0')
-	{
 		return (1);
-	}
 	input_buffer = NULL;
 	total_size = 0;
 	const size_t CHUNK_SIZE = 4096; // 一度に読み込むサイズ
@@ -43,20 +36,17 @@ int	main(int argc, char *argv[])
 	{
 		// 読み込みのためにメモリを拡張
 		temp_buffer = realloc(input_buffer, total_size + CHUNK_SIZE);
-		if (temp_buffer == NULL)
+		if (!temp_buffer)
 		{
 			perror("Error");
-			// メモリ確保失敗 [cite: 3]
 			free(input_buffer);
 			return (1);
 		}
 		input_buffer = temp_buffer;
-		// 標準入力(ファイルディスクリプタ 0)から読み込み [cite: 2]
 		bytes_read = read(0, input_buffer + total_size, CHUNK_SIZE);
 		if (bytes_read < 0)
 		{
 			perror("Error");
-			// 読み込みエラー [cite: 3]
 			free(input_buffer);
 			return (1);
 		}
@@ -77,17 +67,13 @@ int	main(int argc, char *argv[])
 		{
 			// 一致した場合、同じ長さのアスタリスクを出力 [cite: 2, 3]
 			for (size_t j = 0; j < search_len; j++)
-			{
 				printf("*");
-			}
 			// インデックスを検索文字列の分だけ進める
 			i += search_len;
 		}
 		else
 		{
-			// 一致しなかった場合、その1文字を出力
 			printf("%c", input_buffer[i]);
-			// インデックスを1つ進める
 			i++;
 		}
 	}

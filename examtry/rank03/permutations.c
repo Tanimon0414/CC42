@@ -104,12 +104,22 @@ void	gen_all_perm(char **all, char *str, int *row, int current_index,
 	if (current_index == len)
 	{
 		ft_strcpy(all[(*row)], str);
+		(*row)++;
 		return ;
 	}
 	i = current_index;
 	while (i < len)
 	{
+		tmp = str[i];
+		str[i] = str[current_index];
+		str[current_index] = str[i];
+		gen_all_perm(all, str, row, current_index + 1, len);
+		tmp = str[i];
+		str[i] = str[current_index];
+		str[current_index] = str[i];
+		i++;
 	}
+	return ;
 }
 
 int	main(int argc, char **argv)
@@ -118,7 +128,6 @@ int	main(int argc, char **argv)
 	int		num;
 	char	**all;
 	int		row;
-	int		current_index;
 	int		i;
 
 	if (argc != 2)
@@ -135,8 +144,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	row = 0;
-	current_index = 0;
-	gen_all_perm(all, argv[1], &row, current_index, len);
+	gen_all_perm(all, argv[1], &row, 0, len);
 	sort_perm(all, num);
 	put_perm(all, num);
 	return (0);

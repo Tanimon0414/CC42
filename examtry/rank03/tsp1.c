@@ -13,11 +13,66 @@ float	distance(float a[2], float b[2])
 				- a[1])));
 }
 
+float	calc_distance(float (*array)[2], int *perm, ssize_t size)
+{
+	int		i;
+	float	dis;
+
+	i = 0;
+	dis = 0;
+	while (i < size - 1)
+	{
+		dis += distance(array[perm[i]], array[perm[i + 1]]);
+		i++;
+	}
+	dis += distance(array[perm[0]], array[perm[size - 1]]);
+	return (dis);
+}
+
+void	gen_all_perms(float (*array)[2], int *perm, ssize_t size,
+		int current_index, float *best_distance)
+{
+	int		i;
+	float	current_distance;
+	int		tmp;
+
+	if (current_index == size)
+	{
+		current_distance = calc_distance(array, perm, size);
+		if (*best_distance > current_distance)
+			*best_distance = current_distance;
+		return ;
+	}
+	i = current_index;
+	while (i < size)
+	{
+		tmp = perm[i];
+		perm[i] = perm[current_index];
+		perm[current_index] = tmp;
+		gen_all_perms(array, perm, size, current_index + 1, best_distance);
+		tmp = perm[i];
+		perm[i] = perm[current_index];
+		perm[current_index] = tmp;
+		i++;
+	}
+	return ;
+}
+
 float	tsp(float (*array)[2], ssize_t size)
 {
 	float	best_distance;
-	int		i;
+	int		*perm;
 
+	if (size <= 1)
+		return (0.0f);
+	best_distance = __FLT_MAX__;
+	perm = malloc(sizeof(int) * size);
+	if (!perm)
+		return (best_distance);
+	for (int i = 0; i < size; i++)
+		perm[i] = i;
+	gen_all_perms(array, perm, size, 1, &best_distance);
+	free(perm);
 	return (best_distance);
 }
 
