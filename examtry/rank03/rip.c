@@ -105,14 +105,10 @@ int	main(int argc, char **argv)
 		change_loop(left, left - right, '(', argv[1], len, 0);
 	else if (right > left)
 		change_loop(right, right - left, ')', argv[1], len, 0);
-	else
+	else if (left == right)
 	{
-		while (argv[1][i])
-		{
-			write(1, &argv[1][i], 1);
-			i++;
-		}
-		write(1, " \n", 2);
+		if (check_ans(argv[1]))
+			print_ans(argv[1]);
 	}
 	return (0);
 }
