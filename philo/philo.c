@@ -6,7 +6,7 @@
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 16:45:09 by atanimot          #+#    #+#             */
-/*   Updated: 2025/07/31 12:27:36 by atanimot         ###   ########.fr       */
+/*   Updated: 2025/09/27 12:57:37 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	main(int ac, char **av)
 {
-	int	p_num;
-	int	die_time;
-	int	eat_time;
-	int	sleep_time;
-	int	min_eat_num;
+	t_philo	args;
 
-	if (ac)
+	if (ac != 5 || ac != 6)
+		return (0);
+	set_args(args, av);
 }
