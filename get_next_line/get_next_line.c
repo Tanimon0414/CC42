@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2025/05/11 11:49:30 by atanimot          #+#    #+#             */
 /*   Updated: 2025/05/18 18:28:56 by atanimot         ###   ########.fr       */
 /*                                                                            */
@@ -14,8 +17,8 @@
 
 static char	*read_loop(int fd, char *rest, char *buffer)
 {
-	ssize_t	bytes;
-	char	*tmp;
+	ssize_t bytes;
+	char *tmp;
 
 	bytes = 1;
 	while (!ft_strchr(rest, '\n') && bytes > 0)
@@ -36,8 +39,8 @@ static char	*read_loop(int fd, char *rest, char *buffer)
 
 static char	*read_until_newline(int fd, char *rest)
 {
-	char	*buffer;
-	char	*result;
+	char *buffer;
+	char *result;
 
 	if (!rest)
 		rest = ft_strdup("");
@@ -55,8 +58,8 @@ static char	*read_until_newline(int fd, char *rest)
 
 static char	*extract_line(char *rest)
 {
-	size_t	i;
-	char	*line;
+	size_t i;
+	char *line;
 
 	i = 0;
 	if (!rest || !*rest)
@@ -76,8 +79,8 @@ static char	*extract_line(char *rest)
 
 static char	*update_rest(char *rest)
 {
-	size_t	i;
-	char	*new_rest;
+	size_t i;
+	char *new_rest;
 
 	i = 0;
 	while (rest[i] && rest[i] != '\n')
@@ -100,9 +103,9 @@ static char	*update_rest(char *rest)
 
 char	*get_next_line(int fd)
 {
-	static char	*rest;
-	char		*line;
-	char		*new_rest;
+	static char *rest;
+	char *line;
+	char *new_rest;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -119,4 +122,29 @@ char	*get_next_line(int fd)
 	new_rest = update_rest(rest);
 	rest = new_rest;
 	return (line);
+}
+
+#include <stdio.h>
+#include <unistd.h>
+
+
+int	main(void)
+{
+	char *line;
+	int fd;
+
+	// 標準入力のファイルディスクリプタは0
+	fd = 0;
+
+	printf("標準入力を待っています...\n");
+
+	// get_next_lineがNULLを返すまでループ
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("読み込んだ行 -> %s", line);
+		free(line); // メモリリークを防ぐ [cite: 19]
+	}
+
+	printf("入力が終了しました。\n");
+	return (0);
 }

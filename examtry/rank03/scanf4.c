@@ -7,15 +7,11 @@ int	match_space(FILE *f)
 {
 	int	c;
 
-	// isspace()が真を返す限り、文字を読み進める
-	while ((c = fgetc(f)) != EOF && isspace(c))
+	while (c = fgetc(f) != EOF && isspace(c))
 	{
-		// ループ内で何もしない
 	}
-	// 空白でない文字が見つかった場合、ストリームに1文字戻す
 	if (c != EOF)
 		ungetc(c, f);
-	// ストリームエラーをチェック
 	if (ferror(f))
 		return (-1);
 	return (0);
@@ -26,10 +22,8 @@ int	match_char(FILE *f, char c)
 	int	next_c;
 
 	next_c = fgetc(f);
-	// 読み込んだ文字が期待する文字と一致すれば成功
-	if (next_c == c)
+	if ((char)next_c == c)
 		return (1);
-	// 一致しない場合、読み込んだ文字をストリームに戻す
 	if (next_c != EOF)
 		ungetc(next_c, f);
 	return (0);
@@ -37,12 +31,11 @@ int	match_char(FILE *f, char c)
 
 int	scan_char(FILE *f, va_list ap)
 {
-	char	*p;
 	int		c;
+	char	*p;
 
-	// %cは空白を読み飛ばさない
-	p = va_arg(ap, char *);
 	c = fgetc(f);
+	p = va_arg(ap, char *);
 	if (c == EOF)
 		return (0);
 	*p = (char)c;
@@ -51,62 +44,55 @@ int	scan_char(FILE *f, va_list ap)
 
 int	scan_int(FILE *f, va_list ap)
 {
-	int		*p;
-	long	n;
-	int		sign;
-	int		c;
-	int		count;
+	int	*p;
+	int	count;
+	int	n;
+	int	sign;
+	int	c;
 
+	c = fgetc(f);
+	count = 0;
 	n = 0;
 	sign = 1;
-	count = 0;
 	p = va_arg(ap, int *);
-	c = fgetc(f);
-	// 符号の処理
 	if (c == '+' || c == '-')
 	{
 		if (c == '-')
 			sign = -1;
 		c = fgetc(f);
 	}
-	// 数字が続く限り読み込み、整数に変換
 	while (isdigit(c))
 	{
 		n = n * 10 + (c - '0');
 		count++;
 		c = fgetc(f);
 	}
-	// 数字でない文字はストリームに戻す
-	if (c != EOF)
-		ungetc(c, f);
-	// 1文字も数字を読んでいない場合は失敗
 	if (count == 0)
 		return (0);
+	if (c != EOF)
+		ungetc(c, f);
 	*p = (int)(n * sign);
 	return (1);
 }
 
 int	scan_string(FILE *f, va_list ap)
 {
-	char	*p;
 	int		c;
+	char	*p;
 	int		count;
 
-	count = 0;
 	p = va_arg(ap, char *);
-	// 空白文字に遭遇するまで読み込む
-	while ((c = fgetc(f)) != EOF && !isspace(c))
+	count = 0;
+	while (c = fgetc(f) != EOF && !isspace(c))
 	{
-		*p++ = (char)c;
+		*p = (char)c;
+		p++;
 		count++;
 	}
-	// 最後に読み込んだ空白文字はストリームに戻す
 	if (c != EOF)
 		ungetc(c, f);
-	// 1文字も読み込んでいない場合は失敗
 	if (count == 0)
 		return (0);
-	// 文字列の終端にヌル文字を追加
 	*p = '\0';
 	return (1);
 }
@@ -166,31 +152,11 @@ int	ft_vfscanf(FILE *f, const char *format, va_list ap)
 
 int	ft_scanf(const char *format, ...)
 {
-	va_list	ap;
 	int		ret;
+	va_list	ap;
 
 	va_start(ap, format);
 	ret = ft_vfscanf(stdin, format, ap);
 	va_end(ap);
 	return (ret);
-}
-
-int	main(void)
-{
-	int		n1;
-	int		n2;
-	char	str1[100];
-	char	str2[100];
-	int		ret;
-	int		ft_ret;
-
-	printf("本家\n");
-	ret = scanf("%d, %s", &n1, str1);
-	printf("ret = %d\n", ret);
-	printf("%d, %s", n1, str1);
-	printf("\nft\n");
-	ft_ret = ft_scanf("%d, %s", &n2, str2);
-	printf("ft_ret = %d\n", ft_ret);
-	printf("%d, %s", n2, str2);
-	return (0);
 }

@@ -129,3 +129,25 @@ char	*get_next_line(int fd)
 	}
 	return (res);
 }
+
+#include "broken_gnl.h" // あなたのget_next_lineヘッダファイル
+#include <stdio.h>
+#include <unistd.h>
+
+int	main(void)
+{
+	char	*line;
+	int		fd;
+
+	// 標準入力のファイルディスクリプタは0
+	fd = 0;
+	printf("標準入力を待っています...\n");
+	// get_next_lineがNULLを返すまでループ
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("読み込んだ行 -> %s", line);
+		free(line); // メモリリークを防ぐ [cite: 19]
+	}
+	printf("入力が終了しました。\n");
+	return (0);
+}

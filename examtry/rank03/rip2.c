@@ -82,7 +82,7 @@ void	change_par(char take, int num, char *str, int len, int p)
 		change_par(take, num, str, len, p + 1);
 	else
 	{
-		change_par(take, num, str, len, p + 1);
+		// change_par(take, num, str, len, p + 1);
 		str[p] = ' ';
 		change_par(take, num - 1, str, len, p + 1);
 		str[p] = take;
