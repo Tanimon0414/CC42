@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atanimot <atanimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 16:45:09 by atanimot          #+#    #+#             */
-/*   Updated: 2025/09/27 12:57:37 by atanimot         ###   ########.fr       */
+/*   Created: 2025/09/28 16:46:18 by atanimot          #+#    #+#             */
+/*   Updated: 2025/09/28 16:46:50 by atanimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+int	cleanup_and_exit(t_data *data, const char *error_msg)
 {
-	t_philo	args;
-
-	if (ac != 5 || ac != 6)
-		return (0);
-	set_args(args, av);
+	printf("%s\n", error_msg);
+	if (data->philos)
+		free(data->philos);
+	if (data->forks)
+		free(data->forks);
+	// 他にも確保したものがあればここで解放
+	return (1);
 }
