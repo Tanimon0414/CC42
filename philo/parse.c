@@ -17,6 +17,7 @@ static bool	ft_isdigit(char c)
 	return (c >= '0' && c <= '9');
 }
 
+/* Convert a positive integer string into uint64_t with overflow checks. */
 bool	ft_parse_uint64(const char *str, uint64_t *dest)
 {
 	uint64_t	result;
@@ -43,11 +44,12 @@ bool	ft_parse_uint64(const char *str, uint64_t *dest)
 	return (true);
 }
 
+/* Parse argv and validate all mandatory / optional arguments. */
 bool	set_args(t_data *data, char **av, int ac)
 {
 	uint64_t	temp;
 
-	if (!ft_parse_uint64(av[1], &temp) || temp == 0 || temp > 300)
+	if (!ft_parse_uint64(av[1], &temp) || temp == 0 || temp > INT_MAX)
 		return (false);
 	data->philo_num = (int)temp;
 	if (!ft_parse_uint64(av[2], &data->death_time) || data->death_time == 0)
@@ -58,7 +60,7 @@ bool	set_args(t_data *data, char **av, int ac)
 		return (false);
 	if (ac == 6)
 	{
-		if (!ft_parse_uint64(av[5], &temp) || temp == 0)
+		if (!ft_parse_uint64(av[5], &temp) || temp == 0 || temp > INT_MAX)
 			return (false);
 		data->meals_nb = (int)temp;
 	}

@@ -1,0 +1,11 @@
+==30922== Helgrind, a thread error detector
+==30922== Copyright (C) 2007-2017, and GNU GPL'd, by OpenWorks LLP et al.
+==30922== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==30922== Command: ./philo 5 800 200 200 7
+==30922== Parent PID: 14920
+==30922== 
+==30922== 
+==30922== Use --history-level=approx or =none to gain increased speed, at
+==30922== the cost of reduced accuracy of conflicting-access information
+==30922== For lists of detected and suppressed errors, rerun with: -s
+==30922== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 179139 from 119)

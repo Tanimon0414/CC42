@@ -6,5 +6,12 @@
 		"get_next_line.h": "c",
 		"so_long.h": "c"
 	},
-	"cmake.ignoreCMakeListsMissing": true
+	"cmake.ignoreCMakeListsMissing": true,
+	"files.exclude": {
+		"**/.DS_Store": false,
+		"**/.git": false,
+		"**/.hg": false,
+		"**/.svn": false,
+		"**/Thumbs.db": false
+	}
 }

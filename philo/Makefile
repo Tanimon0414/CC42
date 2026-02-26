@@ -11,6 +11,8 @@ CFLAGS = -Wall -Wextra -Werror -pthread
 # ここにあなたの.c ファイルをすべて列挙してください。
 # 例: SRCS = main.c init.c actions.c monitor.c utils.c
 SRCS = 	main.c \
+		cleanup.c \
+		monitor.c \
 		init.c \
 		error.c \
 		parse.c \

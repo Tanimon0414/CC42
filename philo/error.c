@@ -12,13 +12,11 @@
 
 #include "philo.h"
 
+/* Print error, release allocated resources, and return failure code. */
 int	cleanup_and_exit(t_data *data, const char *error_msg)
 {
-	printf("%s\n", error_msg);
-	if (data->philos)
-		free(data->philos);
-	if (data->forks)
-		free(data->forks);
-	// 他にも確保したものがあればここで解放
+	if (error_msg)
+		printf("%s\n", error_msg);
+	cleanup(data);
 	return (1);
 }
